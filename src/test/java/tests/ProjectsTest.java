@@ -18,6 +18,7 @@ public class ProjectsTest extends BaseTest {
                         name,
                         code);
         Assert.assertEquals(projectSteps.getProjectName(), name);
+        // Postcondition: delete project
         projectSteps
                 .findAndDeleteProject(name);
     }
@@ -36,6 +37,7 @@ public class ProjectsTest extends BaseTest {
                         code,
                         newName);
         Assert.assertEquals(projectSteps.getProjectName(), newName);
+        // Postcondition: delete project
         projectSteps
                 .findAndDeleteProject(name);
     }

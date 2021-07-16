@@ -1,7 +1,5 @@
 package pages;
 
-//import adapters.ProjectsAdapter;
-//import objects.Project;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -14,7 +12,6 @@ public class ProjectsPage extends HeaderPage {
     }
 
     public static final String PROJECTS_URL = BASE_URL + "/projects";
-//    public static final String PROJECT_URL = ALL_PROJECTS_URL + "/%s";
     public static final String PROJECT_NAME = "//*[@class='project-row']//*[text()='%s']";
     public static final String PROJECT_DROPDOWN = "//*[text()='%s']/ancestor::*[@class='project-row']//*[contains(@class,'btn')]";
     public static final String PROJECT_DROPDOWN_ITEM = "//*[@class='dropdown']//*[contains(text(),'%s')]";
@@ -61,24 +58,4 @@ public class ProjectsPage extends HeaderPage {
     public boolean isProjectDeleted(String projectName) {
         return driver.findElements(By.xpath(String.format(PROJECT_NAME,projectName))).isEmpty();
     }
-
-//    public boolean createProjectAndGetStatus(String name, String code) {
-//        Project project = Project.builder()
-//                .title(name)
-//                .code(code)
-//                .access("all")
-//                .group(null)
-//                .build();
-//        return new ProjectsAdapter().createAndGetStatus(project);
-//    }
-//
-//    public String createProjectAndGetCode(String name, String code, String token) {
-//        Project project = Project.builder()
-//                .title(name)
-//                .code(code)
-//                .access("all")
-//                .group(null)
-//                .build();
-//        return new ProjectsAdapter().createAndGetCode(project);
-//    }
 }

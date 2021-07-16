@@ -43,7 +43,7 @@ public class BaseTest implements ITestConstants {
         randomGenerators = new RandomGenerators();
     }
 
-    @AfterMethod(enabled = true)
+    @AfterMethod
     public void endTest() {
         driver.quit();
     }

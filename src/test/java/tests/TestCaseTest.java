@@ -17,6 +17,7 @@ public class TestCaseTest extends BaseTest {
                         name,
                         code);
         Assert.assertEquals(testCaseSteps.getCreatedTestCaseNameFromSuite(name), name);
+        // Postcondition: delete project
         projectSteps
                 .findAndDeleteProject(name);
     }
@@ -33,6 +34,7 @@ public class TestCaseTest extends BaseTest {
                         name,
                         code);
         Assert.assertTrue(testCaseSteps.isTestCaseDeleted(name));
+        // Postcondition: delete project
         projectSteps
                 .findAndDeleteProject(name);
     }

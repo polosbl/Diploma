@@ -17,6 +17,7 @@ public class SuitsTest extends BaseTest {
                         name,
                         code);
         Assert.assertEquals(suiteSteps.getCreatedSuiteName(), name);
+        // Postcondition: delete project
         projectSteps
                 .findAndDeleteProject(name);
     }
@@ -35,6 +36,7 @@ public class SuitsTest extends BaseTest {
                         code,
                         newName);
         Assert.assertEquals(suiteSteps.getCreatedSuiteName(), newName);
+        // Postcondition: delete project
         projectSteps
                 .findAndDeleteProject(name);
     }
@@ -51,6 +53,7 @@ public class SuitsTest extends BaseTest {
                         name,
                         code);
         Assert.assertTrue(suiteSteps.isSuiteDeleted(name));
+        // Postcondition: delete project
         projectSteps
                 .findAndDeleteProject(name);
     }

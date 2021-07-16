@@ -6,7 +6,6 @@ import org.openqa.selenium.support.FindBy;
 import utils.RandomGenerators;
 
 public class CreateProjectPage extends HeaderPage {
-    RandomGenerators randomGenerators;
 
     public CreateProjectPage(WebDriver driver) {
         super(driver);
@@ -29,14 +28,6 @@ public class CreateProjectPage extends HeaderPage {
 
     @FindBy(xpath = "//*[@type='submit']")
     public WebElement createProjectButton;
-
-//    public String generateProjectName() {
-//        return randomGenerators.randomId();
-//    }
-//
-//    public String generateProjectCode() {
-//        return randomGenerators.randomId();
-//    }
 
     public RepositoriesPage createProject(String name, String code) {
         projectNameField.sendKeys(name);
