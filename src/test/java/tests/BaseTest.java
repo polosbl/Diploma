@@ -8,6 +8,7 @@ import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import pages.LoginPage;
 import pages.ProjectsPage;
+import steps.LoginSteps;
 import steps.ProjectSteps;
 import steps.SuiteSteps;
 import steps.TestCaseSteps;
@@ -22,6 +23,7 @@ public class BaseTest implements ITestConstants {
     ProjectSteps projectSteps;
     SuiteSteps suiteSteps;
     TestCaseSteps testCaseSteps;
+    LoginSteps loginSteps;
     RandomGenerators randomGenerators;
 
     @BeforeMethod
@@ -40,6 +42,7 @@ public class BaseTest implements ITestConstants {
         projectSteps = new ProjectSteps(driver);
         suiteSteps = new SuiteSteps(driver);
         testCaseSteps = new TestCaseSteps(driver);
+        loginSteps = new LoginSteps(driver);
         randomGenerators = new RandomGenerators();
     }
 

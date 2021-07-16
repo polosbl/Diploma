@@ -27,7 +27,7 @@ public class ProjectSteps {
         return this;
     }
 
-    public ProjectSteps CreateProjectAndEditName(String url, String email, String password, String name, String code, String newName) {
+    public ProjectSteps createProjectAndEditName(String url, String email, String password, String name, String code, String newName) {
         loginAndCreateProject(url, email, password, name, code);
         repositoriesPage.editProjectName(newName);
         return this;
@@ -72,6 +72,52 @@ public class ProjectSteps {
                 .clearSearchField()
                 .findProjectByName(name)
                 .openProjectRepository(name);
+        return this;
+    }
+
+    public ProjectSteps findAndOpenProject(String projectName) {
+        projectsPage
+                .clearSearchField()
+                .findProjectByName(projectName)
+                .openProjectRepository(projectName);
+        return this;
+    }
+
+    public ProjectSteps findAndEditProject(String name, String newName) {
+        projectsPage
+                .clearSearchField()
+                .findProjectByName(name)
+                .openProjectRepository(name)
+                .editProjectName(newName);
+        return this;
+    }
+
+    public ProjectSteps createProject(String name, String code) {
+        projectsPage
+                .clickCreateProjectButton()
+                .createProject(name,code);
+        return this;
+    }
+
+    public ProjectSteps createAndEditProject (String name, String code, String newName) {
+        projectsPage
+                .clickCreateProjectButton()
+                .createProject(name,code)
+                .editProjectName(newName);
+        return this;
+    }
+
+    public ProjectSteps createAndDeleteProject (String name, String code) {
+        projectsPage
+                .clickCreateProjectButton()
+                .createProject(name,code)
+                .deleteProjectFromRepositories();
+        return this;
+    }
+
+    public ProjectSteps editProjectName (String newName) {
+        repositoriesPage
+                .editProjectName(newName);
         return this;
     }
 

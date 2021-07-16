@@ -56,6 +56,13 @@ public class SuiteSteps {
         return this;
     }
 
+    public SuiteSteps createSuite(String name) {
+        repositoriesPage
+                .clickCreateNewSuiteButton()
+                .createNewSuite(name);
+        return this;
+    }
+
     public String getCreatedSuiteName() {
         return repositoriesPage.getCreatedSuiteName();
     }
