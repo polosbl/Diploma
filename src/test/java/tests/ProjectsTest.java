@@ -1,5 +1,7 @@
 package tests;
 
+import adapters.ProjectsAdapter;
+import objects.Project;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 import utils.PropertyReader;
@@ -70,5 +72,30 @@ public class ProjectsTest extends BaseTest {
                         name,
                         code);
         Assert.assertTrue(projectSteps.isProjectDeleted(name));
+    }
+
+    //TODO: Implement page object and steps
+    @Test
+    public void createProjectAndEditName() {
+        String name = randomGenerators.randomId();
+        String code = randomGenerators.randomCode();
+        String newName = randomGenerators.randomId();
+        Project project = Project.builder()
+                .title(name)
+                .code(code)
+                .access("all")
+                .group(null)
+                .build();
+        new ProjectsAdapter().create(project);
+        projectSteps
+                .findAndEditProject(
+                        BASE_URL,
+                        System.getenv().getOrDefault("username", PropertyReader.getProperty("username")),
+                        System.getenv().getOrDefault("password", PropertyReader.getProperty("password")),
+                        name,
+                        newName);
+        Assert.assertEquals(projectSteps.getProjectName(),newName);
+        projectSteps
+                .findAndDeleteProject(newName);
     }
 }

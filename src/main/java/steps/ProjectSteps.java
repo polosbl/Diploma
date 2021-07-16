@@ -47,9 +47,31 @@ public class ProjectSteps {
     public ProjectSteps findAndDeleteProject(String name) {
         projectsPage
                 .openPage()
+                .clearSearchField()
                 .findProjectByName(name)
                 .deleteProjectFromList(name, "Delete")
                 .confirmDelete();
+        return this;
+    }
+
+    public ProjectSteps findAndEditProject(String url, String email, String password, String name, String newName) {
+        loginPage
+                .openPage(url)
+                .login(email, password)
+                .clearSearchField()
+                .findProjectByName(name)
+                .openProjectRepository(name)
+                .editProjectName(newName);
+        return this;
+    }
+
+    public ProjectSteps loginAndOpenProject(String url, String email, String password, String name) {
+        loginPage
+                .openPage(url)
+                .login(email, password)
+                .clearSearchField()
+                .findProjectByName(name)
+                .openProjectRepository(name);
         return this;
     }
 
