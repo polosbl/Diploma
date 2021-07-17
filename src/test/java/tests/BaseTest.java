@@ -5,6 +5,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.support.PageFactory;
+import org.testng.ITestContext;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import pages.LoginPage;
@@ -28,7 +29,7 @@ public class BaseTest implements ITestConstants {
     RandomGenerators randomGenerators;
 
     @BeforeMethod
-    public void initTest() {
+    public void initTest(ITestContext context) {
         WebDriverManager.chromedriver().setup();
         ChromeOptions options = new ChromeOptions();
         options.addArguments("--no-sandbox"); // Bypass OS security model, MUST BE THE VERY FIRST OPTION
@@ -43,6 +44,10 @@ public class BaseTest implements ITestConstants {
         driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
         initPages();
         PageFactory.initElements(driver, this);
+        //Screenshots
+        String variable = "driver";
+        System.out.println("Setting driver into context with variable name " + variable);
+        context.setAttribute(variable, driver);
     }
 
     public void initPages() {
