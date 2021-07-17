@@ -8,9 +8,10 @@ public class LoginTest extends BaseTest {
 
     @Test
     public void loginTest() {
-        loginPage
-                .openPage(BASE_URL)
-                .login(System.getenv().getOrDefault("username", PropertyReader.getProperty("username")),
+        loginSteps
+                .login(
+                        BASE_URL,
+                        System.getenv().getOrDefault("username", PropertyReader.getProperty("username")),
                         System.getenv().getOrDefault("password", PropertyReader.getProperty("password")));
         Assert.assertEquals(projectSteps.getCurrentUrl(),PROJECTS_URL);
     }

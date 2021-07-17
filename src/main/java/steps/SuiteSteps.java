@@ -1,5 +1,6 @@
 package steps;
 
+import io.qameta.allure.Step;
 import org.openqa.selenium.WebDriver;
 import pages.CreateProjectPage;
 import pages.LoginPage;
@@ -19,6 +20,7 @@ public class SuiteSteps {
         repositoriesPage = new RepositoriesPage(driver);
     }
 
+    @Step ("Logging in and creating project, then creating new suite to project")
     public SuiteSteps loginAndCreateProjectWithSuite(String url, String email, String password, String name,String code) {
         loginPage
                 .openPage(url)
@@ -30,6 +32,7 @@ public class SuiteSteps {
         return this;
     }
 
+    @Step ("Logging in and creating project, then creating and editing suite")
     public SuiteSteps createProjectAndEditSuite(String url, String email, String password, String name, String code, String newName) {
         loginPage
                 .openPage(url)
@@ -43,6 +46,7 @@ public class SuiteSteps {
         return this;
     }
 
+    @Step ("Logging in and creating project, then creating deleting suite")
     public SuiteSteps deleteSuite(String url, String email, String password, String name, String code) {
         loginPage
                 .openPage(url)
@@ -56,6 +60,7 @@ public class SuiteSteps {
         return this;
     }
 
+    @Step ("Creating new suite")
     public SuiteSteps createSuite(String name) {
         repositoriesPage
                 .clickCreateNewSuiteButton()
@@ -67,6 +72,7 @@ public class SuiteSteps {
         return repositoriesPage.getCreatedSuiteName();
     }
 
+    @Step ("Checking is suite {name} deleted")
     public boolean isSuiteDeleted(String name) {
         return repositoriesPage.isSuiteDeleted(name);
     }

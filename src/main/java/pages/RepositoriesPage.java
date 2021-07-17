@@ -1,5 +1,6 @@
 package pages;
 
+import io.qameta.allure.Step;
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
@@ -70,6 +71,7 @@ public class RepositoriesPage extends HeaderPage {
      * @param name
      * @return
      */
+    @Step ("Creating new name to project - {name}")
     public RepositoriesPage editProjectName(String name) {
         settingsMenuItem.click();
         projectNameField.clear();
@@ -81,6 +83,7 @@ public class RepositoriesPage extends HeaderPage {
     /**
      * @return
      */
+    @Step ("Deleting project using settings menu")
     public DeleteProjectPage deleteProjectFromRepositories() {
         settingsMenuItem.click();
         deleteProjectButton.click();
@@ -106,6 +109,7 @@ public class RepositoriesPage extends HeaderPage {
      * @param name
      * @return
      */
+    @Step ("Opening suite settings")
     public CreateSuiteModalPage editSuite(String name) {
         Actions builder = new Actions(driver);
         builder.moveToElement(driver.findElement(By.xpath(String.format(SUITE_HEADER, name)))).perform();
@@ -117,6 +121,7 @@ public class RepositoriesPage extends HeaderPage {
      * @param name
      * @return
      */
+    @Step ("Deleting suite {name}")
     public DeleteSuiteModalPage deleteSuite(String name) {
         Actions builder = new Actions(driver);
         builder.moveToElement(driver.findElement(By.xpath(String.format(SUITE_HEADER, name)))).perform();
@@ -128,6 +133,7 @@ public class RepositoriesPage extends HeaderPage {
      * @param name
      * @return
      */
+    @Step ("Creating new test case {name}")
     public RepositoriesPage createNewTestCase(String name) {
         driver.findElement(By.xpath(String.format(CREATE_TEST_CASE_TO_SUITE_BUTTON, name))).click();
         driver.findElement(By.xpath(String.format(NEW_TEST_CASE_TITLE_FIELD, name))).sendKeys(name + Keys.ENTER);
@@ -138,6 +144,7 @@ public class RepositoriesPage extends HeaderPage {
      * @param name
      * @return
      */
+    @Step ("Deleting test case {name}")
     public DeleteTestCaseModalPage deleteTestCase(String name) {
         driver.findElement(By.xpath(String.format(TEST_CASE_CHECKBOX, name))).click();
         deleteButton.click();

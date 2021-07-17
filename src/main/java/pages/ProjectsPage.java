@@ -1,5 +1,6 @@
 package pages;
 
+import io.qameta.allure.Step;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -39,6 +40,7 @@ public class ProjectsPage extends HeaderPage {
     /**
      * @return
      */
+    @Step ("Clearing search field")
     public ProjectsPage clearSearchField() {
         searchField.click();
         searchField.clear();
@@ -49,6 +51,7 @@ public class ProjectsPage extends HeaderPage {
      * @param name
      * @return
      */
+    @Step ("Finding project by name - {name}")
     public ProjectsPage findProjectByName(String name) {
         searchField.sendKeys(name);
         return this;
@@ -58,6 +61,7 @@ public class ProjectsPage extends HeaderPage {
      * @param name
      * @return
      */
+    @Step ("Opening project {name} repository")
     public RepositoriesPage openProjectRepository(String name) {
         driver.findElement(By.xpath(String.format(PROJECT_NAME, name))).click();
         return new RepositoriesPage(driver);
@@ -68,6 +72,7 @@ public class ProjectsPage extends HeaderPage {
      * @param dropdownItem
      * @return
      */
+    @Step ("Deleting project {name} using dropdown menu")
     public DeleteProjectPage deleteProjectFromList(String name, String dropdownItem) {
         driver.findElement(By.xpath(String.format(PROJECT_DROPDOWN, name))).click();
         driver.findElement(By.xpath(String.format(PROJECT_DROPDOWN_ITEM, dropdownItem))).click();
@@ -78,6 +83,7 @@ public class ProjectsPage extends HeaderPage {
      * @param projectName
      * @return
      */
+    @Step ("Checking is project {projectName} deleted")
     public boolean isProjectDeleted(String projectName) {
         return driver.findElements(By.xpath(String.format(PROJECT_NAME,projectName))).isEmpty();
     }

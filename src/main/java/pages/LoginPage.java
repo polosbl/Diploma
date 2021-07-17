@@ -1,5 +1,6 @@
 package pages;
 
+import io.qameta.allure.Step;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -29,6 +30,7 @@ public class LoginPage extends BasePage {
      * @param password
      * @return
      */
+    @Step("Logging in as {email} with password - {password}")
     public ProjectsPage login(String email, String password) {
         emailInput.sendKeys(email);
         passwordInput.sendKeys(password);
