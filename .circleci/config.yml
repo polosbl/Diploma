@@ -45,6 +45,6 @@ workflows:
           filters:
             branches:
               only:
-                - soucedemo_fix
+                - v0.02
     jobs:
       - ui-tests
