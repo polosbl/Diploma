@@ -13,6 +13,9 @@ public class DeleteSuiteModalPage extends HeaderPage {
     @FindBy(xpath = "//button[@type='submit']")
     public WebElement deleteSuiteButton;
 
+    /**
+     * @return
+     */
     public RepositoriesPage confirmDeleteSuite () {
         deleteSuiteButton.click();
         return new RepositoriesPage(driver);

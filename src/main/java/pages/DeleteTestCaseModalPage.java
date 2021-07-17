@@ -14,6 +14,9 @@ public class DeleteTestCaseModalPage extends HeaderPage {
     @FindBy (xpath = "//*[@name='confirm']")
     public WebElement confirmDeleteField;
 
+    /**
+     * @return
+     */
     public RepositoriesPage confirmDeleteTestCase () {
         confirmDeleteField.sendKeys("CONFIRM");
         deleteTestCaseButton.click();

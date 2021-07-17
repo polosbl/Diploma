@@ -29,6 +29,11 @@ public class CreateProjectPage extends HeaderPage {
     @FindBy(xpath = "//*[@type='submit']")
     public WebElement createProjectButton;
 
+    /**
+     * @param name
+     * @param code
+     * @return
+     */
     public RepositoriesPage createProject(String name, String code) {
         projectNameField.sendKeys(name);
         projectCodeField.clear();

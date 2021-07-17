@@ -28,33 +28,56 @@ public class ProjectsPage extends HeaderPage {
         return this;
     }
 
+    /**
+     * @return
+     */
     public CreateProjectPage clickCreateProjectButton() {
         createProjectButton.click();
         return new CreateProjectPage(driver);
     }
 
+    /**
+     * @return
+     */
     public ProjectsPage clearSearchField() {
         searchField.click();
         searchField.clear();
         return this;
     }
 
+    /**
+     * @param name
+     * @return
+     */
     public ProjectsPage findProjectByName(String name) {
         searchField.sendKeys(name);
         return this;
     }
 
+    /**
+     * @param name
+     * @return
+     */
     public RepositoriesPage openProjectRepository(String name) {
         driver.findElement(By.xpath(String.format(PROJECT_NAME, name))).click();
         return new RepositoriesPage(driver);
     }
 
+    /**
+     * @param name
+     * @param dropdownItem
+     * @return
+     */
     public DeleteProjectPage deleteProjectFromList(String name, String dropdownItem) {
         driver.findElement(By.xpath(String.format(PROJECT_DROPDOWN, name))).click();
         driver.findElement(By.xpath(String.format(PROJECT_DROPDOWN_ITEM, dropdownItem))).click();
         return new DeleteProjectPage(driver);
     }
 
+    /**
+     * @param projectName
+     * @return
+     */
     public boolean isProjectDeleted(String projectName) {
         return driver.findElements(By.xpath(String.format(PROJECT_NAME,projectName))).isEmpty();
     }

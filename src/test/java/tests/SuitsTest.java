@@ -7,7 +7,7 @@ import org.testng.annotations.Test;
 import utils.PropertyReader;
 
 public class SuitsTest extends BaseTest {
-    @Test
+    @Test (description = "Logging in and creating project, then creating suite",groups = "SuiteTest")
     public void createNewSuiteTest() {
         String name = randomGenerators.randomId();
         String code = randomGenerators.randomId();
@@ -26,7 +26,7 @@ public class SuitsTest extends BaseTest {
 
     //NEW
     //TODO: Implement page object and steps
-    @Test
+    @Test (description = "Creating project via API, logging in and creating suite in created project",groups = "SuiteTest")
     public void newCreateNewSuiteTest() {
         String name = randomGenerators.randomId();
         String code = randomGenerators.randomId();
@@ -52,7 +52,7 @@ public class SuitsTest extends BaseTest {
                 .findAndDeleteProject(name);
     }
 
-    @Test
+    @Test (description = "Logging in and creating project, then creating and editing suite's name",groups = "SuiteTest")
     public void editSuiteNameTest() {
         String name = randomGenerators.randomId();
         String code = randomGenerators.randomId();
@@ -71,7 +71,7 @@ public class SuitsTest extends BaseTest {
                 .findAndDeleteProject(name);
     }
 
-    @Test
+    @Test (description = "Logging in and creating project, then creating and deleting suite",groups = "SuiteTest")
     public void deleteSuiteTest() {
         String name = randomGenerators.randomId();
         String code = randomGenerators.randomId();

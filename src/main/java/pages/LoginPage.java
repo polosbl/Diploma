@@ -24,6 +24,11 @@ public class LoginPage extends BasePage {
         return this;
     }
 
+    /**
+     * @param email
+     * @param password
+     * @return
+     */
     public ProjectsPage login(String email, String password) {
         emailInput.sendKeys(email);
         passwordInput.sendKeys(password);

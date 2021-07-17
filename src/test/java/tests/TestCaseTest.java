@@ -5,7 +5,7 @@ import org.testng.annotations.Test;
 import utils.PropertyReader;
 
 public class TestCaseTest extends BaseTest {
-    @Test
+    @Test (description = "Logging in and creating project, then creating suite and test case",groups = "TestCaseTest")
     public void createTestCaseToSuite() {
         String name = randomGenerators.randomId();
         String code = randomGenerators.randomId();
@@ -22,7 +22,7 @@ public class TestCaseTest extends BaseTest {
                 .findAndDeleteProject(name);
     }
 
-    @Test
+    @Test (description = "Logging in and creating project and suite, then creating and  deleting test case",groups = "TestCaseTest")
     public void deleteTestCaseTest() {
         String name = randomGenerators.randomId();
         String code = randomGenerators.randomId();

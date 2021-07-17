@@ -66,6 +66,10 @@ public class RepositoriesPage extends HeaderPage {
     @FindBy(xpath = "(//*[@class='suite-header-title'])[last()]")
     public WebElement createdSuiteName;
 
+    /**
+     * @param name
+     * @return
+     */
     public RepositoriesPage editProjectName(String name) {
         settingsMenuItem.click();
         projectNameField.clear();
@@ -74,21 +78,34 @@ public class RepositoriesPage extends HeaderPage {
         return this;
     }
 
+    /**
+     * @return
+     */
     public DeleteProjectPage deleteProjectFromRepositories() {
         settingsMenuItem.click();
         deleteProjectButton.click();
         return new DeleteProjectPage(driver);
     }
 
+    /**
+     * @return
+     */
     public String getProjectName() {
         return projectName.getText();
     }
 
+    /**
+     * @return
+     */
     public CreateSuiteModalPage clickCreateNewSuiteButton() {
         createNewSuiteButtonFromEmptyRepository.click();
         return new CreateSuiteModalPage(driver);
     }
 
+    /**
+     * @param name
+     * @return
+     */
     public CreateSuiteModalPage editSuite(String name) {
         Actions builder = new Actions(driver);
         builder.moveToElement(driver.findElement(By.xpath(String.format(SUITE_HEADER, name)))).perform();
@@ -96,6 +113,10 @@ public class RepositoriesPage extends HeaderPage {
         return new CreateSuiteModalPage(driver);
     }
 
+    /**
+     * @param name
+     * @return
+     */
     public DeleteSuiteModalPage deleteSuite(String name) {
         Actions builder = new Actions(driver);
         builder.moveToElement(driver.findElement(By.xpath(String.format(SUITE_HEADER, name)))).perform();
@@ -103,30 +124,53 @@ public class RepositoriesPage extends HeaderPage {
         return new DeleteSuiteModalPage(driver);
     }
 
+    /**
+     * @param name
+     * @return
+     */
     public RepositoriesPage createNewTestCase(String name) {
         driver.findElement(By.xpath(String.format(CREATE_TEST_CASE_TO_SUITE_BUTTON, name))).click();
         driver.findElement(By.xpath(String.format(NEW_TEST_CASE_TITLE_FIELD, name))).sendKeys(name + Keys.ENTER);
         return this;
     }
 
+    /**
+     * @param name
+     * @return
+     */
     public DeleteTestCaseModalPage deleteTestCase(String name) {
         driver.findElement(By.xpath(String.format(TEST_CASE_CHECKBOX, name))).click();
         deleteButton.click();
         return new DeleteTestCaseModalPage(driver);
     }
 
+    /**
+     * @return
+     */
     public String getCreatedSuiteName() {
         return createdSuiteName.getText();
     }
 
+    /**
+     * @param suiteName
+     * @return
+     */
     public boolean isSuiteDeleted(String suiteName) {
         return driver.findElements(By.xpath(String.format(SUITE_HEADER,suiteName))).isEmpty();
     }
 
+    /**
+     * @param suiteName
+     * @return
+     */
     public String getCreatedTestCaseNameFromSuite(String suiteName) {
         return driver.findElement(By.xpath(String.format(CREATED_TEST_CASE_NAME,suiteName))).getText();
     }
 
+    /**
+     * @param suiteName
+     * @return
+     */
     public boolean isTestCaseDeleted(String suiteName) {
         return driver.findElements(By.xpath(String.format(CREATED_TEST_CASE_NAME,suiteName))).isEmpty();
     }

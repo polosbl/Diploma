@@ -16,12 +16,20 @@ public class CreateSuiteModalPage extends HeaderPage {
     @FindBy(xpath = "//*[@type='submit']")
     public WebElement createButton;
 
+    /**
+     * @param name
+     * @return
+     */
     public RepositoriesPage createNewSuite (String name) {
         suiteName.sendKeys(name);
         createButton.click();
         return new RepositoriesPage(driver);
     }
 
+    /**
+     * @param newName
+     * @return
+     */
     public RepositoriesPage editSuiteName (String newName) {
         suiteName.clear();
         suiteName.sendKeys(newName);

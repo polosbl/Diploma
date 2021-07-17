@@ -13,6 +13,9 @@ public class DeleteProjectPage extends HeaderPage {
     @FindBy(xpath = "//*[@type='submit']")
     public WebElement deleteProjectButton;
 
+    /**
+     * @return
+     */
     public ProjectsPage confirmDelete() {
         deleteProjectButton.click();
         return new ProjectsPage(driver);
