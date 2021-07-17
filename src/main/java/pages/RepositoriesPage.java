@@ -1,6 +1,7 @@
 package pages;
 
 import io.qameta.allure.Step;
+import lombok.extern.log4j.Log4j2;
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
@@ -8,6 +9,7 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.FindBy;
 
+@Log4j2
 public class RepositoriesPage extends HeaderPage {
 
     public RepositoriesPage(WebDriver driver) {
@@ -73,9 +75,13 @@ public class RepositoriesPage extends HeaderPage {
      */
     @Step ("Creating new name to project - {name}")
     public RepositoriesPage editProjectName(String name) {
+        log.info("Opening settings");
         settingsMenuItem.click();
+        log.info("Clearing name field");
         projectNameField.clear();
+        log.info("Typing new name");
         projectNameField.sendKeys(name);
+        log.info("Updating project");
         updateSettingsButton.click();
         return this;
     }
@@ -85,7 +91,9 @@ public class RepositoriesPage extends HeaderPage {
      */
     @Step ("Deleting project using settings menu")
     public DeleteProjectPage deleteProjectFromRepositories() {
+        log.info("Opening settings");
         settingsMenuItem.click();
+        log.info("Clicking delete button");
         deleteProjectButton.click();
         return new DeleteProjectPage(driver);
     }
@@ -94,6 +102,7 @@ public class RepositoriesPage extends HeaderPage {
      * @return
      */
     public String getProjectName() {
+        log.info("Getting project name form header");
         return projectName.getText();
     }
 
@@ -101,6 +110,7 @@ public class RepositoriesPage extends HeaderPage {
      * @return
      */
     public CreateSuiteModalPage clickCreateNewSuiteButton() {
+        log.info("Clicking create new suite button");
         createNewSuiteButtonFromEmptyRepository.click();
         return new CreateSuiteModalPage(driver);
     }
@@ -112,7 +122,9 @@ public class RepositoriesPage extends HeaderPage {
     @Step ("Opening suite settings")
     public CreateSuiteModalPage editSuite(String name) {
         Actions builder = new Actions(driver);
+        log.info(String.format("Hovering over suite '%s'",name));
         builder.moveToElement(driver.findElement(By.xpath(String.format(SUITE_HEADER, name)))).perform();
+        log.info("Clicking edit suite button");
         driver.findElement(By.xpath(String.format(EDIT_SUITE_BUTTON, name))).click();
         return new CreateSuiteModalPage(driver);
     }
@@ -124,7 +136,9 @@ public class RepositoriesPage extends HeaderPage {
     @Step ("Deleting suite {name}")
     public DeleteSuiteModalPage deleteSuite(String name) {
         Actions builder = new Actions(driver);
+        log.info(String.format("Hovering over suite '%s'",name));
         builder.moveToElement(driver.findElement(By.xpath(String.format(SUITE_HEADER, name)))).perform();
+        log.info("Clicking delete suite button");
         driver.findElement(By.xpath(String.format(DELETE_SUITE_BUTTON, name))).click();
         return new DeleteSuiteModalPage(driver);
     }
@@ -135,7 +149,9 @@ public class RepositoriesPage extends HeaderPage {
      */
     @Step ("Creating new test case {name}")
     public RepositoriesPage createNewTestCase(String name) {
+        log.info("Clicking create new test case to suite button");
         driver.findElement(By.xpath(String.format(CREATE_TEST_CASE_TO_SUITE_BUTTON, name))).click();
+        log.info(String.format("Typing test case name '%s'",name));
         driver.findElement(By.xpath(String.format(NEW_TEST_CASE_TITLE_FIELD, name))).sendKeys(name + Keys.ENTER);
         return this;
     }
@@ -146,7 +162,9 @@ public class RepositoriesPage extends HeaderPage {
      */
     @Step ("Deleting test case {name}")
     public DeleteTestCaseModalPage deleteTestCase(String name) {
+        log.info(String.format("Activating checkbox of test case '%s'",name));
         driver.findElement(By.xpath(String.format(TEST_CASE_CHECKBOX, name))).click();
+        log.info("Clicking delete button");
         deleteButton.click();
         return new DeleteTestCaseModalPage(driver);
     }
@@ -155,6 +173,7 @@ public class RepositoriesPage extends HeaderPage {
      * @return
      */
     public String getCreatedSuiteName() {
+        log.info("Getting created suite name");
         return createdSuiteName.getText();
     }
 
@@ -171,6 +190,7 @@ public class RepositoriesPage extends HeaderPage {
      * @return
      */
     public String getCreatedTestCaseNameFromSuite(String suiteName) {
+        log.info("Getting created test case name");
         return driver.findElement(By.xpath(String.format(CREATED_TEST_CASE_NAME,suiteName))).getText();
     }
 
