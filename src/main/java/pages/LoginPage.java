@@ -13,6 +13,8 @@ public class LoginPage extends BasePage {
         super(driver);
     }
 
+    private static final String LOGIN_URL = BASE_URL + "/login";
+
     @FindBy(xpath = "//*[@id='inputEmail']")
     public WebElement emailInput;
 
@@ -22,9 +24,9 @@ public class LoginPage extends BasePage {
     @FindBy(xpath = "//*[@id='btnLogin']")
     public WebElement loginButton;
 
-    public LoginPage openPage(String url) {
-        log.info("Opening Login page, URL: " + url);
-        driver.get(url);
+    public LoginPage openPage() {
+        log.info("Opening Login page, URL: " + LOGIN_URL);
+        driver.get(LOGIN_URL);
         return this;
     }
 

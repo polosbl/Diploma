@@ -7,7 +7,7 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
 @Log4j2
-public class DeleteSuiteModalPage extends HeaderPage {
+public class DeleteSuiteModalPage extends BasePage {
 
     public DeleteSuiteModalPage(WebDriver driver) {
         super(driver);
@@ -20,7 +20,7 @@ public class DeleteSuiteModalPage extends HeaderPage {
      * @return
      */
     @Step ("Confirming suite deletion")
-    public RepositoriesPage confirmDeleteSuite () {
+    public RepositoriesPage clickDeleteSuiteButton() {
         log.info("Clicking delete button.");
         deleteSuiteButton.click();
         return new RepositoriesPage(driver);

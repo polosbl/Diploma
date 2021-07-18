@@ -15,6 +15,7 @@ import steps.LoginSteps;
 import steps.ProjectSteps;
 import steps.SuiteSteps;
 import steps.TestCaseSteps;
+import testConstants.ITestConstants;
 import utils.RandomGenerators;
 
 import java.util.concurrent.TimeUnit;
@@ -28,19 +29,12 @@ public class BaseTest implements ITestConstants {
     SuiteSteps suiteSteps;
     TestCaseSteps testCaseSteps;
     LoginSteps loginSteps;
-    RandomGenerators randomGenerators;
 
     @BeforeMethod
     public void initTest(ITestContext context) {
         WebDriverManager.chromedriver().setup();
         ChromeOptions options = new ChromeOptions();
-        options.addArguments("--no-sandbox"); // Bypass OS security model, MUST BE THE VERY FIRST OPTION
         options.addArguments("--headless");
-        options.addArguments("start-maximized"); // open Browser in maximized mode
-        options.addArguments("disable-infobars"); // disabling infobars
-        options.addArguments("--disable-extensions"); // disabling extensions
-        options.addArguments("--disable-gpu"); // applicable to windows os only
-        options.addArguments("--disable-dev-shm-usage"); // overcome limited resource problems
         driver = new ChromeDriver(options);
         driver.manage().window().maximize();
         driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
@@ -59,7 +53,6 @@ public class BaseTest implements ITestConstants {
         suiteSteps = new SuiteSteps(driver);
         testCaseSteps = new TestCaseSteps(driver);
         loginSteps = new LoginSteps(driver);
-        randomGenerators = new RandomGenerators();
     }
 
     @AfterMethod

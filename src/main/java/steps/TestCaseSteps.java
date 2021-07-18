@@ -20,9 +20,9 @@ public class TestCaseSteps {
     }
 
     @Step("Logging in and creating project, then creating new suite and test case")
-    public TestCaseSteps createProjectWithSuiteAndTestCase(String url, String email, String password, String name, String code) {
+    public TestCaseSteps createProjectWithSuiteAndTestCase(String email, String password, String name, String code) {
         loginPage
-                .openPage(url)
+                .openPage()
                 .login(email,password)
                 .clickCreateProjectButton()
                 .createProject(name,code)
@@ -33,9 +33,9 @@ public class TestCaseSteps {
     }
 
     @Step("Logging in and creating project, then deleting created test case")
-    public TestCaseSteps deleteTestCaseFromSuite(String url, String email, String password, String name, String code) {
+    public TestCaseSteps deleteTestCaseFromSuite(String email, String password, String name, String code) {
         loginPage
-                .openPage(url)
+                .openPage()
                 .login(email,password)
                 .clickCreateProjectButton()
                 .createProject(name,code)

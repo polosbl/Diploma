@@ -5,15 +5,15 @@ import objects.Project;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 import utils.PropertyReader;
+import utils.RandomGenerators;
 
 public class SuitsTest extends BaseTest {
     @Test (description = "Logging in and creating project, then creating suite",groups = "SuiteTest")
     public void createNewSuiteTest() {
-        String name = randomGenerators.randomId();
-        String code = randomGenerators.randomId();
+        String name = RandomGenerators.randomId();
+        String code = RandomGenerators.randomCode();
         suiteSteps
                 .loginAndCreateProjectWithSuite(
-                        BASE_URL,
                         System.getenv().getOrDefault("username", PropertyReader.getProperty("username")),
                         System.getenv().getOrDefault("password", PropertyReader.getProperty("password")),
                         name,
@@ -28,8 +28,8 @@ public class SuitsTest extends BaseTest {
     //TODO: Implement page object and steps
     @Test (description = "Creating project via API, logging in and creating suite in created project",groups = "SuiteTest")
     public void newCreateNewSuiteTest() {
-        String name = randomGenerators.randomId();
-        String code = randomGenerators.randomId();
+        String name = RandomGenerators.randomId();
+        String code = RandomGenerators.randomCode();
         Project project = Project.builder()
                 .title(name)
                 .code(code)
@@ -39,7 +39,6 @@ public class SuitsTest extends BaseTest {
         new ProjectsAdapter().create(project);
         loginSteps
                 .login(
-                        BASE_URL,
                         System.getenv().getOrDefault("username", PropertyReader.getProperty("username")),
                         System.getenv().getOrDefault("password", PropertyReader.getProperty("password")));
         projectSteps
@@ -53,18 +52,19 @@ public class SuitsTest extends BaseTest {
     }
 
     @Test (description = "Logging in and creating project, then creating and editing suite's name",groups = "SuiteTest")
-    public void editSuiteNameTest() {
-        String name = randomGenerators.randomId();
-        String code = randomGenerators.randomId();
-        String newName = randomGenerators.randomId();
+    public void editSuiteNameTest() throws InterruptedException {
+        String name = RandomGenerators.randomId();
+        String code = RandomGenerators.randomCode();
+        String newName = RandomGenerators.randomId();
         suiteSteps
                 .createProjectAndEditSuite(
-                        BASE_URL,
                         System.getenv().getOrDefault("username", PropertyReader.getProperty("username")),
                         System.getenv().getOrDefault("password", PropertyReader.getProperty("password")),
                         name,
                         code,
                         newName);
+        //TODO: Implement waiter
+        Thread.sleep(2000);
         Assert.assertEquals(suiteSteps.getCreatedSuiteName(), newName);
         // Postcondition: delete project
         projectSteps
@@ -73,11 +73,10 @@ public class SuitsTest extends BaseTest {
 
     @Test (description = "Logging in and creating project, then creating and deleting suite",groups = "SuiteTest")
     public void deleteSuiteTest() {
-        String name = randomGenerators.randomId();
-        String code = randomGenerators.randomId();
+        String name = RandomGenerators.randomId();
+        String code = RandomGenerators.randomCode();
         suiteSteps
                 .deleteSuite(
-                        BASE_URL,
                         System.getenv().getOrDefault("username", PropertyReader.getProperty("username")),
                         System.getenv().getOrDefault("password", PropertyReader.getProperty("password")),
                         name,

@@ -1,4 +1,4 @@
-package tests;
+package testConstants;
 
 public interface ITestConstants {
     String BASE_URL = "https://app.qase.io/login";

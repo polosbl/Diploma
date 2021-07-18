@@ -16,9 +16,9 @@ public class LoginSteps {
     }
 
     @Step("Logging in as {email} with password {password}")
-    public LoginSteps login(String url,String email, String password) {
+    public LoginSteps login(String email, String password) {
         loginPage
-                .openPage(url)
+                .openPage()
                 .login(email, password);
         return this;
     }

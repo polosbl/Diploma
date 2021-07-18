@@ -9,13 +9,15 @@ import static io.restassured.RestAssured.given;
 public class BaseAdapter {
 
     private static final String BASE_URL = "https://api.qase.io/v1";
+    private static final String CONTENT_TYPE = "Content-Type";
+    private static final String APPLICATION_JSON = "application/json";
     Gson converter = new Gson();
 
     public Response get(String url) {
         return
                 given()
                         .header("Token", System.getenv().getOrDefault("token", PropertyReader.getProperty("token")))
-                        .header("Content-Type", "application/json")
+                        .header(CONTENT_TYPE, APPLICATION_JSON)
                         .when()
                         .get(BASE_URL + url)
                         .then()
@@ -27,7 +29,7 @@ public class BaseAdapter {
         return
                 given()
                         .header("Token", System.getenv().getOrDefault("token", PropertyReader.getProperty("token")))
-                        .header("Content-Type", "application/json")
+                        .header(CONTENT_TYPE, APPLICATION_JSON)
                         .body(body)
                         .when()
                         .post(BASE_URL + url)

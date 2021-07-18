@@ -8,6 +8,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.FindBy;
+import utils.CommonUtils;
 
 @Log4j2
 public class RepositoriesPage extends HeaderPage {
@@ -121,9 +122,8 @@ public class RepositoriesPage extends HeaderPage {
      */
     @Step ("Opening suite settings")
     public CreateSuiteModalPage editSuite(String name) {
-        Actions builder = new Actions(driver);
         log.info(String.format("Hovering over suite '%s'",name));
-        builder.moveToElement(driver.findElement(By.xpath(String.format(SUITE_HEADER, name)))).perform();
+        CommonUtils.hoverOverElement(driver,SUITE_HEADER,name);
         log.info("Clicking edit suite button");
         driver.findElement(By.xpath(String.format(EDIT_SUITE_BUTTON, name))).click();
         return new CreateSuiteModalPage(driver);
@@ -135,9 +135,8 @@ public class RepositoriesPage extends HeaderPage {
      */
     @Step ("Deleting suite {name}")
     public DeleteSuiteModalPage deleteSuite(String name) {
-        Actions builder = new Actions(driver);
         log.info(String.format("Hovering over suite '%s'",name));
-        builder.moveToElement(driver.findElement(By.xpath(String.format(SUITE_HEADER, name)))).perform();
+        CommonUtils.hoverOverElement(driver,SUITE_HEADER,name);
         log.info("Clicking delete suite button");
         driver.findElement(By.xpath(String.format(DELETE_SUITE_BUTTON, name))).click();
         return new DeleteSuiteModalPage(driver);

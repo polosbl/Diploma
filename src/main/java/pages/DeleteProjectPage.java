@@ -20,7 +20,7 @@ public class DeleteProjectPage extends HeaderPage {
      * @return
      */
     @Step("Confirming project deletion")
-    public ProjectsPage confirmDelete() {
+    public ProjectsPage clickDeleteProjectButton() {
         log.info("Clicking delete button.");
         deleteProjectButton.click();
         return new ProjectsPage(driver);

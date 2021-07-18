@@ -7,7 +7,7 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
 @Log4j2
-public class CreateSuiteModalPage extends HeaderPage {
+public class CreateSuiteModalPage extends BasePage {
 
     public CreateSuiteModalPage(WebDriver driver) {
         super(driver);

@@ -21,9 +21,9 @@ public class SuiteSteps {
     }
 
     @Step ("Logging in and creating project, then creating new suite to project")
-    public SuiteSteps loginAndCreateProjectWithSuite(String url, String email, String password, String name,String code) {
+    public SuiteSteps loginAndCreateProjectWithSuite(String email, String password, String name,String code) {
         loginPage
-                .openPage(url)
+                .openPage()
                 .login(email,password)
                 .clickCreateProjectButton()
                 .createProject(name,code)
@@ -33,9 +33,9 @@ public class SuiteSteps {
     }
 
     @Step ("Logging in and creating project, then creating and editing suite")
-    public SuiteSteps createProjectAndEditSuite(String url, String email, String password, String name, String code, String newName) {
+    public SuiteSteps createProjectAndEditSuite(String email, String password, String name, String code, String newName) {
         loginPage
-                .openPage(url)
+                .openPage()
                 .login(email,password)
                 .clickCreateProjectButton()
                 .createProject(name,code)
@@ -47,16 +47,16 @@ public class SuiteSteps {
     }
 
     @Step ("Logging in and creating project, then creating deleting suite")
-    public SuiteSteps deleteSuite(String url, String email, String password, String name, String code) {
+    public SuiteSteps deleteSuite(String email, String password, String name, String code) {
         loginPage
-                .openPage(url)
+                .openPage()
                 .login(email,password)
                 .clickCreateProjectButton()
                 .createProject(name,code)
                 .clickCreateNewSuiteButton()
                 .createNewSuite(name)
                 .deleteSuite(name)
-                .confirmDeleteSuite();
+                .clickDeleteSuiteButton();
         return this;
     }
 

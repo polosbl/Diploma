@@ -20,9 +20,9 @@ public class ProjectSteps {
     }
 
     @Step ("Logging in and creating project")
-    public ProjectSteps loginAndCreateProject(String url,String email, String password, String name, String code) {
+    public ProjectSteps loginAndCreateProject(String email, String password, String name, String code) {
         loginPage
-                .openPage(url)
+                .openPage()
                 .login(email, password)
                 .clickCreateProjectButton()
                 .createProject(name, code);
@@ -30,20 +30,20 @@ public class ProjectSteps {
     }
 
     @Step ("Logging in and creating project, then editing name")
-    public ProjectSteps createProjectAndEditName(String url, String email, String password, String name, String code, String newName) {
-        loginAndCreateProject(url, email, password, name, code);
+    public ProjectSteps createProjectAndEditName(String email, String password, String name, String code, String newName) {
+        loginAndCreateProject(email, password, name, code);
         repositoriesPage.editProjectName(newName);
         return this;
     }
     @Step ("Logging in and creating project, then deleting project")
-    public ProjectSteps createAndDeleteProjectFromRepository(String url, String email, String password, String name, String code) {
+    public ProjectSteps createAndDeleteProjectFromRepository(String email, String password, String name, String code) {
         loginPage
-                .openPage(url)
+                .openPage()
                 .login(email, password)
                 .clickCreateProjectButton()
                 .createProject(name, code)
                 .deleteProjectFromRepositories()
-                .confirmDelete();
+                .clickDeleteProjectButton();
         return this;
     }
 
@@ -54,14 +54,14 @@ public class ProjectSteps {
                 .clearSearchField()
                 .findProjectByName(name)
                 .deleteProjectFromList(name, "Delete")
-                .confirmDelete();
+                .clickDeleteProjectButton();
         return this;
     }
 
     @Step ("Logging in and finding project, then editing name")
-    public ProjectSteps findAndEditProject(String url, String email, String password, String name, String newName) {
+    public ProjectSteps findAndEditProject(String email, String password, String name, String newName) {
         loginPage
-                .openPage(url)
+                .openPage()
                 .login(email, password)
                 .clearSearchField()
                 .findProjectByName(name)
@@ -71,9 +71,9 @@ public class ProjectSteps {
     }
 
     @Step ("Logging in and finding project, then opening project")
-    public ProjectSteps loginAndOpenProject(String url, String email, String password, String name) {
+    public ProjectSteps loginAndOpenProject(String email, String password, String name) {
         loginPage
-                .openPage(url)
+                .openPage()
                 .login(email, password)
                 .clearSearchField()
                 .findProjectByName(name)

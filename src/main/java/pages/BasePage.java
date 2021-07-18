@@ -19,4 +19,8 @@ public class BasePage {
         log.debug("Getting current URL.");
         return driver.getCurrentUrl();
     }
+
+    public void openPage(String url) {
+        driver.get(url);
+    }
 }

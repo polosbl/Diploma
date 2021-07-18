@@ -7,10 +7,12 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
 @Log4j2
-public class DeleteTestCaseModalPage extends HeaderPage {
+public class DeleteTestCaseModalPage extends BasePage {
     public DeleteTestCaseModalPage(WebDriver driver) {
         super(driver);
     }
+
+    private static final String CONFIRMATION_WORD = "CONFIRM";
 
     @FindBy(xpath = "//button[contains(@class,'btn-danger')]")
     public WebElement deleteTestCaseButton;
@@ -23,7 +25,7 @@ public class DeleteTestCaseModalPage extends HeaderPage {
     @Step ("Confirming test case deletion")
     public RepositoriesPage confirmDeleteTestCase () {
         log.info("Typing CONFIRM");
-        confirmDeleteField.sendKeys("CONFIRM");
+        confirmDeleteField.sendKeys(CONFIRMATION_WORD);
         log.info("Clicking delete button.");
         deleteTestCaseButton.click();
         return new RepositoriesPage(driver);
