@@ -3,15 +3,15 @@ package tests;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 import utils.PropertyReader;
+import utils.RandomGenerators;
 
 public class SuitsTest extends BaseTest {
     @Test
     public void createNewSuiteTest() {
-        String name = randomGenerators.randomId();
-        String code = randomGenerators.randomId();
+        String name = RandomGenerators.randomId();
+        String code = RandomGenerators.randomCode();
         suiteSteps
                 .loginAndCreateProjectWithSuite(
-                        BASE_URL,
                         System.getenv().getOrDefault("username", PropertyReader.getProperty("username")),
                         System.getenv().getOrDefault("password", PropertyReader.getProperty("password")),
                         name,
@@ -23,18 +23,19 @@ public class SuitsTest extends BaseTest {
     }
 
     @Test
-    public void editSuiteNameTest() {
-        String name = randomGenerators.randomId();
-        String code = randomGenerators.randomId();
-        String newName = randomGenerators.randomId();
+    public void editSuiteNameTest() throws InterruptedException {
+        String name = RandomGenerators.randomId();
+        String code = RandomGenerators.randomCode();
+        String newName = RandomGenerators.randomId();
         suiteSteps
                 .createProjectAndEditSuite(
-                        BASE_URL,
                         System.getenv().getOrDefault("username", PropertyReader.getProperty("username")),
                         System.getenv().getOrDefault("password", PropertyReader.getProperty("password")),
                         name,
                         code,
                         newName);
+        //TODO: Implement waiter
+        Thread.sleep(2000);
         Assert.assertEquals(suiteSteps.getCreatedSuiteName(), newName);
         // Postcondition: delete project
         projectSteps
@@ -43,11 +44,10 @@ public class SuitsTest extends BaseTest {
 
     @Test
     public void deleteSuiteTest() {
-        String name = randomGenerators.randomId();
-        String code = randomGenerators.randomId();
+        String name = RandomGenerators.randomId();
+        String code = RandomGenerators.randomCode();
         suiteSteps
                 .deleteSuite(
-                        BASE_URL,
                         System.getenv().getOrDefault("username", PropertyReader.getProperty("username")),
                         System.getenv().getOrDefault("password", PropertyReader.getProperty("password")),
                         name,

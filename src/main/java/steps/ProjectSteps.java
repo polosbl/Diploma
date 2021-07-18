@@ -18,29 +18,29 @@ public class ProjectSteps {
         repositoriesPage = new RepositoriesPage(driver);
     }
 
-    public ProjectSteps loginAndCreateProject(String url,String email, String password, String name, String code) {
+    public ProjectSteps loginAndCreateProject(String email, String password, String name, String code) {
         loginPage
-                .openPage(url)
+                .openPage()
                 .login(email, password)
                 .clickCreateProjectButton()
                 .createProject(name, code);
         return this;
     }
 
-    public ProjectSteps CreateProjectAndEditName(String url, String email, String password, String name, String code, String newName) {
-        loginAndCreateProject(url, email, password, name, code);
+    public ProjectSteps CreateProjectAndEditName(String email, String password, String name, String code, String newName) {
+        loginAndCreateProject(email, password, name, code);
         repositoriesPage.editProjectName(newName);
         return this;
     }
 
-    public ProjectSteps createAndDeleteProjectFromRepository(String url, String email, String password, String name, String code) {
+    public ProjectSteps createAndDeleteProjectFromRepository(String email, String password, String name, String code) {
         loginPage
-                .openPage(url)
+                .openPage()
                 .login(email, password)
                 .clickCreateProjectButton()
                 .createProject(name, code)
                 .deleteProjectFromRepositories()
-                .confirmDelete();
+                .clickDeleteProjectButton();
         return this;
     }
 
@@ -50,13 +50,13 @@ public class ProjectSteps {
                 .clearSearchField()
                 .findProjectByName(name)
                 .deleteProjectFromList(name, "Delete")
-                .confirmDelete();
+                .clickDeleteProjectButton();
         return this;
     }
 
-    public ProjectSteps findAndEditProject(String url, String email, String password, String name, String newName) {
+    public ProjectSteps findAndEditProject(String email, String password, String name, String newName) {
         loginPage
-                .openPage(url)
+                .openPage()
                 .login(email, password)
                 .clearSearchField()
                 .findProjectByName(name)
@@ -65,9 +65,9 @@ public class ProjectSteps {
         return this;
     }
 
-    public ProjectSteps loginAndOpenProject(String url, String email, String password, String name) {
+    public ProjectSteps loginAndOpenProject(String email, String password, String name) {
         loginPage
-                .openPage(url)
+                .openPage()
                 .login(email, password)
                 .clearSearchField()
                 .findProjectByName(name)

@@ -6,6 +6,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.FindBy;
+import utils.CommonUtils;
 
 public class RepositoriesPage extends HeaderPage {
 
@@ -45,10 +46,10 @@ public class RepositoriesPage extends HeaderPage {
     @FindBy(xpath = "//*[@id='public-access-type']")
     public WebElement publicAccessRadioButton;
 
-    @FindBy(xpath = "//*[@class='col text-start']//*[contains(text(), 'Update')]")
+    @FindBy(xpath = "//*[contains(@class,'text-start')]//*[contains(text(), 'Update')]")
     public WebElement updateSettingsButton;
 
-    @FindBy(xpath = "//*[@class='col text-start']//*[contains(text(), 'Delete')]")
+    @FindBy(xpath = "//*[contains(@class,'text-start')]//*[contains(text(), 'Delete')]")
     public WebElement deleteProjectButton;
 
     @FindBy(xpath = "//*[contains(@class,'btn-primary') and contains(text(),'suite')]")
@@ -90,15 +91,13 @@ public class RepositoriesPage extends HeaderPage {
     }
 
     public CreateSuiteModalPage editSuite(String name) {
-        Actions builder = new Actions(driver);
-        builder.moveToElement(driver.findElement(By.xpath(String.format(SUITE_HEADER, name)))).perform();
+        CommonUtils.hoverOverElement(driver,SUITE_HEADER,name);
         driver.findElement(By.xpath(String.format(EDIT_SUITE_BUTTON, name))).click();
         return new CreateSuiteModalPage(driver);
     }
 
     public DeleteSuiteModalPage deleteSuite(String name) {
-        Actions builder = new Actions(driver);
-        builder.moveToElement(driver.findElement(By.xpath(String.format(SUITE_HEADER, name)))).perform();
+        CommonUtils.hoverOverElement(driver,SUITE_HEADER,name);
         driver.findElement(By.xpath(String.format(DELETE_SUITE_BUTTON, name))).click();
         return new DeleteSuiteModalPage(driver);
     }

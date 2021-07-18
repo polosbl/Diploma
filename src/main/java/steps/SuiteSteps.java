@@ -19,23 +19,23 @@ public class SuiteSteps {
         repositoriesPage = new RepositoriesPage(driver);
     }
 
-    public SuiteSteps loginAndCreateProjectWithSuite(String url, String email, String password, String name,String code) {
+    public SuiteSteps loginAndCreateProjectWithSuite(String email, String password, String name, String code) {
         loginPage
-                .openPage(url)
-                .login(email,password)
+                .openPage()
+                .login(email, password)
                 .clickCreateProjectButton()
-                .createProject(name,code)
+                .createProject(name, code)
                 .clickCreateNewSuiteButton()
                 .createNewSuite(name);
         return this;
     }
 
-    public SuiteSteps createProjectAndEditSuite(String url, String email, String password, String name, String code, String newName) {
+    public SuiteSteps createProjectAndEditSuite(String email, String password, String name, String code, String newName) {
         loginPage
-                .openPage(url)
-                .login(email,password)
+                .openPage()
+                .login(email, password)
                 .clickCreateProjectButton()
-                .createProject(name,code)
+                .createProject(name, code)
                 .clickCreateNewSuiteButton()
                 .createNewSuite(name)
                 .editSuite(name)
@@ -43,16 +43,16 @@ public class SuiteSteps {
         return this;
     }
 
-    public SuiteSteps deleteSuite(String url, String email, String password, String name, String code) {
+    public SuiteSteps deleteSuite(String email, String password, String name, String code) {
         loginPage
-                .openPage(url)
-                .login(email,password)
+                .openPage()
+                .login(email, password)
                 .clickCreateProjectButton()
-                .createProject(name,code)
+                .createProject(name, code)
                 .clickCreateNewSuiteButton()
                 .createNewSuite(name)
                 .deleteSuite(name)
-                .confirmDeleteSuite();
+                .clickDeleteSuiteButton();
         return this;
     }
 

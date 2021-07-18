@@ -4,7 +4,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
-public class DeleteTestCaseModalPage extends HeaderPage {
+public class DeleteTestCaseModalPage extends BasePage {
     public DeleteTestCaseModalPage(WebDriver driver) {
         super(driver);
     }

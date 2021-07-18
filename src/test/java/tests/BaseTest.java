@@ -4,14 +4,13 @@ import io.github.bonigarcia.wdm.WebDriverManager;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.support.PageFactory;
-import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import pages.LoginPage;
 import pages.ProjectsPage;
 import steps.ProjectSteps;
 import steps.SuiteSteps;
 import steps.TestCaseSteps;
-import utils.RandomGenerators;
+import testConstants.ITestConstants;
 
 import java.util.concurrent.TimeUnit;
 
@@ -22,7 +21,6 @@ public class BaseTest implements ITestConstants {
     ProjectSteps projectSteps;
     SuiteSteps suiteSteps;
     TestCaseSteps testCaseSteps;
-    RandomGenerators randomGenerators;
 
     @BeforeMethod
     public void initTest() {
@@ -40,11 +38,10 @@ public class BaseTest implements ITestConstants {
         projectSteps = new ProjectSteps(driver);
         suiteSteps = new SuiteSteps(driver);
         testCaseSteps = new TestCaseSteps(driver);
-        randomGenerators = new RandomGenerators();
     }
 
-    @AfterMethod
-    public void endTest() {
-        driver.quit();
-    }
+//    @AfterMethod
+//    public void endTest() {
+//        driver.quit();
+//    }
 }

@@ -18,9 +18,9 @@ public class TestCaseSteps {
         repositoriesPage = new RepositoriesPage(driver);
     }
 
-    public TestCaseSteps createProjectWithSuiteAndTestCase(String url, String email, String password, String name, String code) {
+    public TestCaseSteps createProjectWithSuiteAndTestCase(String email, String password, String name, String code) {
         loginPage
-                .openPage(url)
+                .openPage()
                 .login(email,password)
                 .clickCreateProjectButton()
                 .createProject(name,code)
@@ -30,9 +30,9 @@ public class TestCaseSteps {
         return this;
     }
 
-    public TestCaseSteps deleteTestCaseFromSuite(String url, String email, String password, String name, String code) {
+    public TestCaseSteps deleteTestCaseFromSuite(String email, String password, String name, String code) {
         loginPage
-                .openPage(url)
+                .openPage()
                 .login(email,password)
                 .clickCreateProjectButton()
                 .createProject(name,code)
