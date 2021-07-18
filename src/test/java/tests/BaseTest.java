@@ -4,6 +4,7 @@ import io.github.bonigarcia.wdm.WebDriverManager;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.support.PageFactory;
+import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import pages.LoginPage;
 import pages.ProjectsPage;
@@ -40,8 +41,8 @@ public class BaseTest implements ITestConstants {
         testCaseSteps = new TestCaseSteps(driver);
     }
 
-//    @AfterMethod
-//    public void endTest() {
-//        driver.quit();
-//    }
+    @AfterMethod
+    public void endTest() {
+        driver.quit();
+    }
 }
