@@ -25,8 +25,6 @@ public class ProjectsTest extends BaseTest {
                 .findAndDeleteProject(name);
     }
 
-    //NEW
-    //TODO: Implement page object and steps
     @Test(description = "Creating project via API, logging in and checking created project's name", groups = "ProjectsTest")
     public void newCreateProjectTest() {
         String name = RandomGenerators.randomId();
@@ -68,8 +66,6 @@ public class ProjectsTest extends BaseTest {
                 .findAndDeleteProject(newName);
     }
 
-    //NEW
-    //TODO: Implement page object and steps
     @Test(description = "Creating project via API, logging in and editing created project's name", groups = "ProjectsTest")
     public void newEditProjectNameTest() {
         String name = RandomGenerators.randomId();
@@ -109,8 +105,6 @@ public class ProjectsTest extends BaseTest {
         Assert.assertTrue(projectSteps.isProjectDeleted(name));
     }
 
-    //NEW
-    //TODO: Implement page object and steps
     @Test(description = "Creating project via API, logging in and deleting created project", groups = "ProjectsTest")
     public void newFindAndDeleteProjectFromListTest() {
         String name = RandomGenerators.randomId();
@@ -144,7 +138,6 @@ public class ProjectsTest extends BaseTest {
         Assert.assertTrue(projectSteps.isProjectDeleted(name));
     }
 
-    //NEW
     @Test(description = "Creating project via API, logging in and deleting created project", groups = "ProjectsTest")
     public void newFindAndDeleteProjectFromRepositoriesTest() {
         String name = RandomGenerators.randomId();
@@ -158,7 +151,6 @@ public class ProjectsTest extends BaseTest {
         Assert.assertTrue(projectSteps.isProjectDeleted(name));
     }
 
-    //TODO: Implement page object and steps
     @Test(description = "Creating project via API, logging in and editing created project's name", groups = "ProjectsTest")
     public void createProjectAndEditName() {
         String name = RandomGenerators.randomId();
