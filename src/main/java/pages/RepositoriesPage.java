@@ -49,10 +49,10 @@ public class RepositoriesPage extends HeaderPage {
     @FindBy(xpath = "//*[@id='public-access-type']")
     public WebElement publicAccessRadioButton;
 
-    @FindBy(xpath = "//*[@class='col text-start']//*[contains(text(), 'Update')]")
+    @FindBy(xpath = "//*[contains(@class,'text-start')]//*[contains(text(), 'Update')]")
     public WebElement updateSettingsButton;
 
-    @FindBy(xpath = "//*[@class='col text-start']//*[contains(text(), 'Delete')]")
+    @FindBy(xpath = "//*[contains(@class,'text-start')]//*[contains(text(), 'Delete')]")
     public WebElement deleteProjectButton;
 
     @FindBy(xpath = "//*[contains(@class,'btn-primary') and contains(text(),'suite')]")
