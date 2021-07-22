@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="Diploma test suite" parallel="tests" thread-count="10">
+    <test name="ProjectsTest">
+        <classes>
+            <class name="tests.ProjectsTest"/>
+        </classes>
+    </test>
+</suite>

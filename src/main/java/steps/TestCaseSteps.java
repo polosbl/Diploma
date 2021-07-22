@@ -1,5 +1,6 @@
 package steps;
 
+import io.qameta.allure.Step;
 import org.openqa.selenium.WebDriver;
 import pages.CreateProjectPage;
 import pages.LoginPage;
@@ -18,6 +19,7 @@ public class TestCaseSteps {
         repositoriesPage = new RepositoriesPage(driver);
     }
 
+    @Step("Logging in and creating project, then creating new suite and test case")
     public TestCaseSteps createProjectWithSuiteAndTestCase(String email, String password, String name, String code) {
         loginPage
                 .openPage()
@@ -30,6 +32,7 @@ public class TestCaseSteps {
         return this;
     }
 
+    @Step("Logging in and creating project, then deleting created test case")
     public TestCaseSteps deleteTestCaseFromSuite(String email, String password, String name, String code) {
         loginPage
                 .openPage()
@@ -48,7 +51,8 @@ public class TestCaseSteps {
         return repositoriesPage.getCreatedTestCaseNameFromSuite(suiteName);
     }
 
-    public boolean isTestCaseDeleted(String suiteName) {
-        return repositoriesPage.isTestCaseDeleted(suiteName);
+    @Step ("Checking is test case deleted")
+    public boolean isTestCaseDeleted(String caseName) {
+        return repositoriesPage.isTestCaseDeleted(caseName);
     }
 }

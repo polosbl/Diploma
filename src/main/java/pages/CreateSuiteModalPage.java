@@ -1,9 +1,12 @@
 package pages;
 
+import io.qameta.allure.Step;
+import lombok.extern.log4j.Log4j2;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
+@Log4j2
 public class CreateSuiteModalPage extends BasePage {
 
     public CreateSuiteModalPage(WebDriver driver) {
@@ -16,15 +19,35 @@ public class CreateSuiteModalPage extends BasePage {
     @FindBy(xpath = "//*[@type='submit']")
     public WebElement createButton;
 
+
+    /**
+     * Create new suite repositories page.
+     *
+     * @param name the name
+     * @return the repositories page
+     */
+    @Step ("Creating new suite with name - {name}")
     public RepositoriesPage createNewSuite (String name) {
+        log.info("Filling in suite {name}");
         suiteName.sendKeys(name);
+        log.info("Clicking create button.");
         createButton.click();
         return new RepositoriesPage(driver);
     }
 
+    /**
+     * Edit suite name repositories page.
+     *
+     * @param newName the new name
+     * @return the repositories page
+     */
+    @Step ("Changing name of the suite to {newName}")
     public RepositoriesPage editSuiteName (String newName) {
+        log.info("Deleting old name");
         suiteName.clear();
+        log.info("Creating new name {newName}");
         suiteName.sendKeys(newName);
+        log.info("Clicking create button.");
         createButton.click();
         return new RepositoriesPage(driver);
     }
