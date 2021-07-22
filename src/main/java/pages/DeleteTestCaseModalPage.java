@@ -20,11 +20,13 @@ public class DeleteTestCaseModalPage extends BasePage {
     public WebElement confirmDeleteField;
 
     /**
-     * @return
+     * Confirm delete test case repositories page.
+     *
+     * @return the repositories page
      */
     @Step ("Confirming test case deletion")
     public RepositoriesPage confirmDeleteTestCase () {
-        log.info("Typing CONFIRM");
+        log.info("Typing {CONFIRMATION_WORD}");
         confirmDeleteField.sendKeys(CONFIRMATION_WORD);
         log.info("Clicking delete button.");
         deleteTestCaseButton.click();

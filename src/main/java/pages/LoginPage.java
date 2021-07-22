@@ -31,9 +31,11 @@ public class LoginPage extends BasePage {
     }
 
     /**
-     * @param email
-     * @param password
-     * @return
+     * Login projects page.
+     *
+     * @param email    the email
+     * @param password the password
+     * @return the projects page
      */
     @Step("Logging in as {email} with password - {password}")
     public ProjectsPage login(String email, String password) {

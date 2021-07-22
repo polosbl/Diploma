@@ -32,7 +32,9 @@ public class ProjectsPage extends HeaderPage {
     }
 
     /**
-     * @return
+     * Click create project button create project page.
+     *
+     * @return the create project page
      */
     public CreateProjectPage clickCreateProjectButton() {
         log.info("Clicking create button.");
@@ -41,7 +43,9 @@ public class ProjectsPage extends HeaderPage {
     }
 
     /**
-     * @return
+     * Clear search field projects page.
+     *
+     * @return the projects page
      */
     @Step ("Clearing search field")
     public ProjectsPage clearSearchField() {
@@ -52,19 +56,23 @@ public class ProjectsPage extends HeaderPage {
     }
 
     /**
-     * @param name
-     * @return
+     * Find project by name projects page.
+     *
+     * @param name the name
+     * @return the projects page
      */
     @Step ("Finding project by name - {name}")
     public ProjectsPage findProjectByName(String name) {
-        log.info("Typing project name to search field");
+        log.info("Typing project name {name} to search field");
         searchField.sendKeys(name);
         return this;
     }
 
     /**
-     * @param name
-     * @return
+     * Open project repository repositories page.
+     *
+     * @param name the name
+     * @return the repositories page
      */
     @Step ("Opening project {name} repository")
     public RepositoriesPage openProjectRepository(String name) {
@@ -74,9 +82,11 @@ public class ProjectsPage extends HeaderPage {
     }
 
     /**
-     * @param name
-     * @param dropdownItem
-     * @return
+     * Delete project from list delete project page.
+     *
+     * @param name         the name
+     * @param dropdownItem the dropdown item
+     * @return the delete project page
      */
     @Step ("Deleting project {name} using dropdown menu")
     public DeleteProjectPage deleteProjectFromList(String name, String dropdownItem) {
@@ -88,8 +98,10 @@ public class ProjectsPage extends HeaderPage {
     }
 
     /**
-     * @param projectName
-     * @return
+     * Is project deleted boolean.
+     *
+     * @param projectName the project name
+     * @return the boolean
      */
     @Step ("Checking is project {projectName} deleted")
     public boolean isProjectDeleted(String projectName) {

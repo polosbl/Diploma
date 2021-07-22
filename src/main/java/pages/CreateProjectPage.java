@@ -33,9 +33,11 @@ public class CreateProjectPage extends HeaderPage {
     public WebElement createProjectButton;
 
     /**
-     * @param name
-     * @param code
-     * @return
+     * Create project repositories page.
+     *
+     * @param name the name
+     * @param code the code
+     * @return the repositories page
      */
     @Step ("Creating project {name} with code - {code}")
     public RepositoriesPage createProject(String name, String code) {

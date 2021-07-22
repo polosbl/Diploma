@@ -17,7 +17,9 @@ public class DeleteProjectPage extends HeaderPage {
     public WebElement deleteProjectButton;
 
     /**
-     * @return
+     * Click delete project button projects page.
+     *
+     * @return the projects page
      */
     @Step("Confirming project deletion")
     public ProjectsPage clickDeleteProjectButton() {

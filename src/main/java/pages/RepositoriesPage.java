@@ -71,10 +71,12 @@ public class RepositoriesPage extends HeaderPage {
     public WebElement createdSuiteName;
 
     /**
-     * @param name
-     * @return
+     * Edit project name repositories page.
+     *
+     * @param name the name
+     * @return the repositories page
      */
-    @Step ("Creating new name to project - {name}")
+    @Step("Creating new name to project - {name}")
     public RepositoriesPage editProjectName(String name) {
         log.info("Opening settings");
         settingsMenuItem.click();
@@ -88,9 +90,11 @@ public class RepositoriesPage extends HeaderPage {
     }
 
     /**
-     * @return
+     * Delete project from repositories delete project page.
+     *
+     * @return the delete project page
      */
-    @Step ("Deleting project using settings menu")
+    @Step("Deleting project using settings menu")
     public DeleteProjectPage deleteProjectFromRepositories() {
         log.info("Opening settings");
         settingsMenuItem.click();
@@ -100,7 +104,9 @@ public class RepositoriesPage extends HeaderPage {
     }
 
     /**
-     * @return
+     * Gets project name.
+     *
+     * @return the project name
      */
     public String getProjectName() {
         log.info("Getting project name form header");
@@ -108,7 +114,9 @@ public class RepositoriesPage extends HeaderPage {
     }
 
     /**
-     * @return
+     * Click create new suite button create suite modal page.
+     *
+     * @return the create suite modal page
      */
     public CreateSuiteModalPage clickCreateNewSuiteButton() {
         log.info("Clicking create new suite button");
@@ -117,51 +125,57 @@ public class RepositoriesPage extends HeaderPage {
     }
 
     /**
-     * @param name
-     * @return
+     * Edit suite create suite modal page.
+     *
+     * @param name the name
+     * @return the create suite modal page
      */
-    @Step ("Opening suite settings")
+    @Step("Opening suite settings")
     public CreateSuiteModalPage editSuite(String name) {
-        log.info(String.format("Hovering over suite '%s'",name));
-        CommonUtils.hoverOverElement(driver,SUITE_HEADER,name);
+        CommonUtils.hoverOverElement(driver, SUITE_HEADER, name);
         log.info("Clicking edit suite button");
         driver.findElement(By.xpath(String.format(EDIT_SUITE_BUTTON, name))).click();
         return new CreateSuiteModalPage(driver);
     }
 
     /**
-     * @param name
-     * @return
+     * Delete suite delete suite modal page.
+     *
+     * @param name the name
+     * @return the delete suite modal page
      */
-    @Step ("Deleting suite {name}")
+    @Step("Deleting suite {name}")
     public DeleteSuiteModalPage deleteSuite(String name) {
-        log.info(String.format("Hovering over suite '%s'",name));
-        CommonUtils.hoverOverElement(driver,SUITE_HEADER,name);
+        CommonUtils.hoverOverElement(driver, SUITE_HEADER, name);
         log.info("Clicking delete suite button");
         driver.findElement(By.xpath(String.format(DELETE_SUITE_BUTTON, name))).click();
         return new DeleteSuiteModalPage(driver);
     }
 
     /**
-     * @param name
-     * @return
+     * Create new test case repositories page.
+     *
+     * @param name the name
+     * @return the repositories page
      */
-    @Step ("Creating new test case {name}")
+    @Step("Creating new test case {name}")
     public RepositoriesPage createNewTestCase(String name) {
         log.info("Clicking create new test case to suite button");
         driver.findElement(By.xpath(String.format(CREATE_TEST_CASE_TO_SUITE_BUTTON, name))).click();
-        log.info(String.format("Typing test case name '%s'",name));
+        log.info(String.format("Typing test case name '%s'", name));
         driver.findElement(By.xpath(String.format(NEW_TEST_CASE_TITLE_FIELD, name))).sendKeys(name + Keys.ENTER);
         return this;
     }
 
     /**
-     * @param name
-     * @return
+     * Delete test case delete test case modal page.
+     *
+     * @param name the name
+     * @return the delete test case modal page
      */
-    @Step ("Deleting test case {name}")
+    @Step("Deleting test case {name}")
     public DeleteTestCaseModalPage deleteTestCase(String name) {
-        log.info(String.format("Activating checkbox of test case '%s'",name));
+        log.info(String.format("Activating checkbox of test case '%s'", name));
         driver.findElement(By.xpath(String.format(TEST_CASE_CHECKBOX, name))).click();
         log.info("Clicking delete button");
         deleteButton.click();
@@ -169,7 +183,9 @@ public class RepositoriesPage extends HeaderPage {
     }
 
     /**
-     * @return
+     * Gets created suite name.
+     *
+     * @return the created suite name
      */
     public String getCreatedSuiteName() {
         log.info("Getting created suite name");
@@ -177,28 +193,34 @@ public class RepositoriesPage extends HeaderPage {
     }
 
     /**
-     * @param suiteName
-     * @return
+     * Is suite deleted boolean.
+     *
+     * @param suiteName the suite name
+     * @return the boolean
      */
     public boolean isSuiteDeleted(String suiteName) {
-        return driver.findElements(By.xpath(String.format(SUITE_HEADER,suiteName))).isEmpty();
+        return driver.findElements(By.xpath(String.format(SUITE_HEADER, suiteName))).isEmpty();
     }
 
     /**
-     * @param suiteName
-     * @return
+     * Gets created test case name from suite.
+     *
+     * @param suiteName the suite name
+     * @return the created test case name from suite
      */
     public String getCreatedTestCaseNameFromSuite(String suiteName) {
         log.info("Getting created test case name");
-        return driver.findElement(By.xpath(String.format(CREATED_TEST_CASE_NAME,suiteName))).getText();
+        return driver.findElement(By.xpath(String.format(CREATED_TEST_CASE_NAME, suiteName))).getText();
     }
 
     /**
-     * @param suiteName
-     * @return
+     * Is test case deleted boolean.
+     *
+     * @param suiteName the suite name
+     * @return the boolean
      */
     public boolean isTestCaseDeleted(String suiteName) {
-        return driver.findElements(By.xpath(String.format(CREATED_TEST_CASE_NAME,suiteName))).isEmpty();
+        return driver.findElements(By.xpath(String.format(CREATED_TEST_CASE_NAME, suiteName))).isEmpty();
     }
 
 }

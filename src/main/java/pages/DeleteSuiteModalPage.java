@@ -17,7 +17,9 @@ public class DeleteSuiteModalPage extends BasePage {
     public WebElement deleteSuiteButton;
 
     /**
-     * @return
+     * Click delete suite button repositories page.
+     *
+     * @return the repositories page
      */
     @Step ("Confirming suite deletion")
     public RepositoriesPage clickDeleteSuiteButton() {
