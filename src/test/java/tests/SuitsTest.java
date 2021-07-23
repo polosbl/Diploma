@@ -24,8 +24,6 @@ public class SuitsTest extends BaseTest {
                 .findAndDeleteProject(name);
     }
 
-    //NEW
-    //TODO: Implement page object and steps
     @Test (description = "Creating project via API, logging in and creating suite in created project",groups = "SuiteTest")
     public void createProjectViaAPIAndCreateNewSuiteTest() {
         String name = RandomGenerators.randomId();
