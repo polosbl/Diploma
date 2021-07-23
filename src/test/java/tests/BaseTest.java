@@ -1,7 +1,9 @@
 package tests;
 
 import io.github.bonigarcia.wdm.WebDriverManager;
+import lombok.extern.log4j.Log4j2;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebDriverException;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.support.PageFactory;
@@ -19,7 +21,7 @@ import testConstants.ITestConstants;
 import utils.RandomGenerators;
 
 import java.util.concurrent.TimeUnit;
-
+@Log4j2
 @Listeners(TestListener.class)
 public class BaseTest implements ITestConstants {
     WebDriver driver;
@@ -35,6 +37,11 @@ public class BaseTest implements ITestConstants {
         WebDriverManager.chromedriver().setup();
         ChromeOptions options = new ChromeOptions();
 //        options.addArguments("--headless");
+        try {
+            driver = new ChromeDriver(options);
+        } catch (WebDriverException exception) {
+            log.fatal("Driver was not started!");
+        }
         driver = new ChromeDriver(options);
         driver.manage().window().maximize();
         driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
