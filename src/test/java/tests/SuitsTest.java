@@ -9,7 +9,7 @@ import utils.RandomGenerators;
 
 public class SuitsTest extends BaseTest {
     @Test (description = "Logging in and creating project, then creating suite",groups = "SuiteTest")
-    public void createNewSuiteTest() {
+    public void createNewSuiteViaUITest() {
         String name = RandomGenerators.randomId();
         String code = RandomGenerators.randomCode();
         suiteSteps
@@ -27,7 +27,7 @@ public class SuitsTest extends BaseTest {
     //NEW
     //TODO: Implement page object and steps
     @Test (description = "Creating project via API, logging in and creating suite in created project",groups = "SuiteTest")
-    public void newCreateNewSuiteTest() {
+    public void createProjectViaAPIAndCreateNewSuiteTest() {
         String name = RandomGenerators.randomId();
         String code = RandomGenerators.randomCode();
         Project project = Project.builder()

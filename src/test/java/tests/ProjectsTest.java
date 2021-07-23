@@ -10,7 +10,7 @@ import utils.RandomGenerators;
 public class ProjectsTest extends BaseTest {
 
     @Test(description = "Logging in and creating project", groups = "ProjectsTest")
-    public void createProjectTest() {
+    public void createProjectViaUITest() {
         String name = RandomGenerators.randomId();
         String code = RandomGenerators.randomCode();
         projectSteps
@@ -26,7 +26,7 @@ public class ProjectsTest extends BaseTest {
     }
 
     @Test(description = "Creating project via API, logging in and checking created project's name", groups = "ProjectsTest")
-    public void newCreateProjectTest() {
+    public void createProjectViaAPITest() {
         String name = RandomGenerators.randomId();
         String code = RandomGenerators.randomCode();
         Project project = Project.builder()
@@ -49,7 +49,7 @@ public class ProjectsTest extends BaseTest {
     }
 
     @Test(description = "Logging in and creating project, then editing created project's name", groups = "ProjectsTest")
-    public void editProjectNameTest() {
+    public void editProjectNameViaUITest() {
         String name = RandomGenerators.randomId();
         String code = RandomGenerators.randomCode();
         String newName = RandomGenerators.randomId();
@@ -67,7 +67,7 @@ public class ProjectsTest extends BaseTest {
     }
 
     @Test(description = "Creating project via API, logging in and editing created project's name", groups = "ProjectsTest")
-    public void newEditProjectNameTest() {
+    public void createProjectViaAPIAndEditProjectNameTest() {
         String name = RandomGenerators.randomId();
         String code = RandomGenerators.randomCode();
         String newName = RandomGenerators.randomId();
@@ -106,7 +106,7 @@ public class ProjectsTest extends BaseTest {
     }
 
     @Test(description = "Creating project via API, logging in and deleting created project", groups = "ProjectsTest")
-    public void newFindAndDeleteProjectFromListTest() {
+    public void createProjectViaAPIAndFindAndDeleteProjectFromListTest() {
         String name = RandomGenerators.randomId();
         String code = RandomGenerators.randomCode();
         Project project = Project.builder()
@@ -152,7 +152,7 @@ public class ProjectsTest extends BaseTest {
     }
 
     @Test(description = "Creating project via API, logging in and editing created project's name", groups = "ProjectsTest")
-    public void createProjectAndEditName() {
+    public void createProjectViaAPIAndEditName() {
         String name = RandomGenerators.randomId();
         String code = RandomGenerators.randomCode();
         String newName = RandomGenerators.randomId();
