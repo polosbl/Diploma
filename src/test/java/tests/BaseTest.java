@@ -42,7 +42,6 @@ public class BaseTest implements ITestConstants {
         } catch (WebDriverException exception) {
             log.fatal("Driver was not started!");
         }
-        driver = new ChromeDriver(options);
         driver.manage().window().maximize();
         driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
         initPages();
