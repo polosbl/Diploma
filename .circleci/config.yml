@@ -20,7 +20,7 @@ jobs:
           key: v1-dependencies-{{ checksum "pom.xml" }}
       - run:
           name: Running tests
-          command: mvn clean test -Dtest=ProjectsTest
+          command: mvn clean test
       - run:
           name: Generate allure report
           command: mvn allure:report
@@ -42,6 +42,6 @@ workflows:
           filters:
             branches:
               only:
-                - v0.02
+                - master
     jobs:
       - ui-tests
