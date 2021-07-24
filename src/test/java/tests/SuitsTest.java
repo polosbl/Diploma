@@ -70,7 +70,7 @@ public class SuitsTest extends BaseTest {
     }
 
     @Test (description = "Logging in and creating project, then creating and deleting suite",groups = "SuiteTest")
-    public void deleteSuiteTest() {
+    public void deleteSuiteTest() throws InterruptedException {
         String name = RandomGenerators.randomId();
         String code = RandomGenerators.randomCode();
         suiteSteps
@@ -79,6 +79,8 @@ public class SuitsTest extends BaseTest {
                         System.getenv().getOrDefault("password", PropertyReader.getProperty("password")),
                         name,
                         code);
+        //TODO: Implement waiter
+        Thread.sleep(2000);
         Assert.assertTrue(suiteSteps.isSuiteDeleted(name));
         // Postcondition: delete project
         projectSteps
