@@ -48,7 +48,7 @@ public class ProjectSteps {
     }
 
     @Step ("Finding and deleting project")
-    public ProjectSteps findAndDeleteProject(String name) throws InterruptedException {
+    public ProjectSteps findAndDeleteProject(String name) {
         projectsPage
                 .openPage()
                 .clearSearchField()
@@ -59,7 +59,7 @@ public class ProjectSteps {
     }
 
     @Step ("Logging in and finding project, then editing name")
-    public ProjectSteps findAndEditProject(String email, String password, String name, String newName) throws InterruptedException {
+    public ProjectSteps findAndEditProject(String email, String password, String name, String newName) {
         loginPage
                 .openPage()
                 .login(email, password)
@@ -71,7 +71,7 @@ public class ProjectSteps {
     }
 
     @Step ("Logging in and finding project, then opening project")
-    public ProjectSteps loginAndOpenProject(String email, String password, String name) throws InterruptedException {
+    public ProjectSteps loginAndOpenProject(String email, String password, String name) {
         loginPage
                 .openPage()
                 .login(email, password)
@@ -82,7 +82,7 @@ public class ProjectSteps {
     }
 
     @Step ("Finding and opening project")
-    public ProjectSteps findAndOpenProject(String projectName) throws InterruptedException {
+    public ProjectSteps findAndOpenProject(String projectName) {
         projectsPage
                 .clearSearchField()
                 .findProjectByName(projectName)
@@ -91,7 +91,7 @@ public class ProjectSteps {
     }
 
     @Step ("Finding and editing project")
-    public ProjectSteps findAndEditProject(String name, String newName) throws InterruptedException {
+    public ProjectSteps findAndEditProject(String name, String newName) {
         projectsPage
                 .clearSearchField()
                 .findProjectByName(name)
