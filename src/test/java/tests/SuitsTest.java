@@ -62,7 +62,7 @@ public class SuitsTest extends BaseTest {
                         code,
                         newName);
         //TODO: Implement waiter
-        Thread.sleep(2000);
+        Thread.sleep(3000);
         Assert.assertEquals(suiteSteps.getCreatedSuiteName(), newName);
         // Postcondition: delete project
         projectSteps
