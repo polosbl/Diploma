@@ -62,7 +62,8 @@ public class ProjectsPage extends HeaderPage {
      * @return the projects page
      */
     @Step ("Finding project by name - {name}")
-    public ProjectsPage findProjectByName(String name) {
+    public ProjectsPage findProjectByName(String name) throws InterruptedException {
+        Thread.sleep(2000);
         log.info("Typing project name {name} to search field");
         searchField.sendKeys(name);
         return this;
