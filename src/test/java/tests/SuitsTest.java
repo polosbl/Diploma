@@ -8,7 +8,7 @@ import utils.PropertyReader;
 import utils.RandomGenerators;
 
 public class SuitsTest extends BaseTest {
-    @Test (description = "Logging in and creating project, then creating suite",groups = "SuiteTest",suiteName = "SuiteTest")
+    @Test (description = "Logging in and creating project, then creating suite",groups = "SuiteTest")
     public void createNewSuiteViaUITest() {
         String name = RandomGenerators.randomId();
         String code = RandomGenerators.randomCode();
@@ -24,7 +24,7 @@ public class SuitsTest extends BaseTest {
                 .findAndDeleteProject(name);
     }
 
-    @Test (description = "Creating project via API, logging in and creating suite in created project",groups = "SuiteTest",suiteName = "SuiteTest")
+    @Test (description = "Creating project via API, logging in and creating suite in created project",groups = "SuiteTest")
     public void createProjectViaAPIAndCreateNewSuiteTest() {
         String name = RandomGenerators.randomId();
         String code = RandomGenerators.randomCode();
@@ -49,7 +49,7 @@ public class SuitsTest extends BaseTest {
                 .findAndDeleteProject(name);
     }
 
-    @Test (description = "Logging in and creating project, then creating and editing suite's name",groups = "SuiteTest",suiteName = "SuiteTest")
+    @Test (description = "Logging in and creating project, then creating and editing suite's name",groups = "SuiteTest")
     public void editSuiteNameTest() throws InterruptedException {
         String name = RandomGenerators.randomId();
         String code = RandomGenerators.randomCode();
@@ -67,7 +67,7 @@ public class SuitsTest extends BaseTest {
                 .findAndDeleteProject(name);
     }
 
-    @Test (description = "Logging in and creating project, then creating and deleting suite",groups = "SuiteTest",suiteName = "SuiteTest")
+    @Test (description = "Logging in and creating project, then creating and deleting suite",groups = "SuiteTest")
     public void deleteSuiteTest() throws InterruptedException {
         String name = RandomGenerators.randomId();
         String code = RandomGenerators.randomCode();
