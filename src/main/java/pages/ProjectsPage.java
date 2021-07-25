@@ -115,7 +115,7 @@ public class ProjectsPage extends HeaderPage {
 
     @Step("Waiting for page to open")
     public ProjectsPage waitForProjectsPageToOpen() {
-        WebDriverWait wait = new WebDriverWait(driver, 10);
+        WebDriverWait wait = new WebDriverWait(driver, 30);
         wait.until(ExpectedConditions.visibilityOfAllElements(rows));
         return this;
     }
