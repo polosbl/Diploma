@@ -49,7 +49,6 @@ public class SuitsTest extends BaseTest {
                 .findAndDeleteProject(name);
     }
 
-
     @Test (description = "Logging in and creating project, then creating and editing suite's name",groups = "SuiteTest")
     public void editSuiteNameTest() throws InterruptedException {
         String name = RandomGenerators.randomId();
