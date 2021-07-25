@@ -28,8 +28,8 @@ public class ProjectsPage extends HeaderPage {
     @FindBy(xpath = "//*[@class='filters-block']//*[@name='title']")
     public WebElement searchField;
 
-    @FindBy(xpath = "//*[@class='project-row']")
-    public WebElement rows;
+    @FindBy(xpath = "//*[@class='add-filter-button']")
+    public WebElement addFilterButton;
 
     public ProjectsPage openPage() {
         driver.get(PROJECTS_URL);
@@ -115,8 +115,8 @@ public class ProjectsPage extends HeaderPage {
 
     @Step("Waiting for page to open")
     public ProjectsPage waitForProjectsPageToOpen() {
-        WebDriverWait wait = new WebDriverWait(driver, 30);
-        wait.until(ExpectedConditions.visibilityOfAllElements(rows));
+        WebDriverWait wait = new WebDriverWait(driver, 10);
+        wait.until(ExpectedConditions.visibilityOfAllElements(addFilterButton));
         return this;
     }
 }
