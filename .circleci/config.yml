@@ -20,7 +20,7 @@ jobs:
           key: v1-dependencies-{{ checksum "pom.xml" }}
       - run:
           name: Running tests
-          command: mvn clean test
+          command: mvn clean test -Dtest=ProjectsTest
       - run:
           name: Generate allure report
           command: mvn allure:report
