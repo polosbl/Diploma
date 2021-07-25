@@ -114,7 +114,6 @@ public class RepositoriesPage extends HeaderPage {
      * @return the project name
      */
     public String getProjectName() {
-        waitForSuitsListToOpen();
         log.info("Getting project name form header");
         return projectName.getText();
     }
@@ -228,12 +227,4 @@ public class RepositoriesPage extends HeaderPage {
     public boolean isTestCaseDeleted(String suiteName) {
         return driver.findElements(By.xpath(String.format(CREATED_TEST_CASE_NAME, suiteName))).isEmpty();
     }
-
-    @Step("Waiting for page to open")
-    public RepositoriesPage waitForSuitsListToOpen() {
-        WebDriverWait wait = new WebDriverWait(driver, 10);
-        wait.until(ExpectedConditions.visibilityOfAllElements(suiteBlock));
-        return this;
-    }
-
 }
