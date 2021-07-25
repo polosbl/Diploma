@@ -61,8 +61,8 @@ public class BaseTest implements ITestConstants {
         loginSteps = new LoginSteps(driver);
     }
 
-    @AfterMethod
-    public void endTest() {
-        driver.quit();
-    }
+//    @AfterMethod
+//    public void endTest() {
+//        driver.quit();
+//    }
 }

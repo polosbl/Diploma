@@ -42,8 +42,8 @@ public class SuiteSteps {
                 .clickCreateNewSuiteButton()
                 .createNewSuite(name)
                 .editSuite(name)
-                .waitForModalPageToOpen(name)
-                .editSuiteName(newName);
+//                .waitForModalPageToOpen(name)
+                .editSuiteName(name,newName);
         return this;
     }
 

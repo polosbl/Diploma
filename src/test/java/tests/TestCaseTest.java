@@ -32,8 +32,6 @@ public class TestCaseTest extends BaseTest {
                         System.getenv().getOrDefault("password", PropertyReader.getProperty("password")),
                         name,
                         code);
-        //TODO: Implement waiter
-        Thread.sleep(2000);
         Assert.assertTrue(testCaseSteps.isTestCaseDeleted(name));
         // Postcondition: delete project
         projectSteps

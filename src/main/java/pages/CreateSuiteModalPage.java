@@ -24,6 +24,10 @@ public class CreateSuiteModalPage extends BasePage {
     @FindBy(xpath = "//*[@id='descriptionGroup']//*[@class='ProseMirror']")
     public WebElement descriptionField;
 
+    @FindBy(xpath = "//*[@id='preconditionsGroup']//*[@class='ProseMirror']")
+    public WebElement preconditionsField;
+
+
 
     /**
      * Create new suite repositories page.
@@ -47,10 +51,10 @@ public class CreateSuiteModalPage extends BasePage {
      * @return the repositories page
      */
     @Step ("Changing name of the suite to {newName}")
-    public RepositoriesPage editSuiteName (String newName) {
-        log.info("Adding description");
-        descriptionField.sendKeys(newName);
+    public RepositoriesPage editSuiteName (String name, String newName) {
         log.info("Deleting old name");
+        waitForModalPageToOpen(name);
+        suiteName.click();
         suiteName.clear();
         log.info("Creating new name {newName}");
         suiteName.sendKeys(newName);

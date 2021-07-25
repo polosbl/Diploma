@@ -2,12 +2,10 @@ package pages;
 
 import io.qameta.allure.Step;
 import lombok.extern.log4j.Log4j2;
-import org.openqa.selenium.By;
-import org.openqa.selenium.Keys;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
+import org.openqa.selenium.*;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.ui.ExpectedCondition;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import utils.CommonUtils;
@@ -75,6 +73,18 @@ public class RepositoriesPage extends HeaderPage {
     @FindBy(xpath = "(//*[@class='suite-header-title'])[last()]")
     public WebElement createdSuiteName;
 
+    @FindBy(xpath = "//*[contains(text(),'Suite was successfully edited.')]")
+    public WebElement successSuiteEditMessage;
+
+    @FindBy(xpath = "//*[contains(text(),'Suite was successfully deleted.')]")
+    public WebElement successSuiteDeletionMessage;
+
+    @FindBy(xpath = "//*[contains(text(),'1 test case was successfully deleted')]")
+    public WebElement successTestCaseDeletionMessage;
+
+    @FindBy(xpath = "//*[contains(text(),'Project settings were successfully updated!')]")
+    public WebElement successEditProjectSettingsMessage;
+
     /**
      * Edit project name repositories page.
      *
@@ -114,6 +124,12 @@ public class RepositoriesPage extends HeaderPage {
      * @return the project name
      */
     public String getProjectName() {
+        log.info("Getting project name form header");
+        return projectName.getText();
+    }
+
+    public String getProjectNameAfterEdition() {
+        waitForSuccessProjectSettingsEditMessage();
         log.info("Getting project name form header");
         return projectName.getText();
     }
@@ -193,6 +209,7 @@ public class RepositoriesPage extends HeaderPage {
      * @return the created suite name
      */
     public String getCreatedSuiteName() {
+        waitForSuccessEditSuiteMessage();
         log.info("Getting created suite name");
         return createdSuiteName.getText();
     }
@@ -204,6 +221,7 @@ public class RepositoriesPage extends HeaderPage {
      * @return the boolean
      */
     public boolean isSuiteDeleted(String suiteName) {
+        waitForSuccessDeletionSuiteMessage();
         return driver.findElements(By.xpath(String.format(SUITE_HEADER, suiteName))).isEmpty();
     }
 
@@ -225,6 +243,41 @@ public class RepositoriesPage extends HeaderPage {
      * @return the boolean
      */
     public boolean isTestCaseDeleted(String suiteName) {
+        waitForSuccessDeletionTestCaseMessage();
         return driver.findElements(By.xpath(String.format(CREATED_TEST_CASE_NAME, suiteName))).isEmpty();
     }
+
+    /**
+     * Wait for success edit suite message repositories page.
+     *
+     * @return the repositories page
+     */
+    @Step("Waiting for suite to be edited")
+    public RepositoriesPage waitForSuccessEditSuiteMessage() {
+        WebDriverWait wait = new WebDriverWait(driver, 10);
+        wait.until(ExpectedConditions.visibilityOfAllElements(successSuiteEditMessage));
+        return this;
+    }
+
+    @Step("Waiting for suite to be deleted")
+    public RepositoriesPage waitForSuccessDeletionSuiteMessage() {
+        WebDriverWait wait = new WebDriverWait(driver, 10);
+        wait.until(ExpectedConditions.visibilityOfAllElements(successSuiteDeletionMessage));
+        return this;
+    }
+
+    @Step("Waiting for test case to be deleted")
+    public RepositoriesPage waitForSuccessDeletionTestCaseMessage() {
+        WebDriverWait wait = new WebDriverWait(driver, 10);
+        wait.until(ExpectedConditions.visibilityOfAllElements(successTestCaseDeletionMessage));
+        return this;
+    }
+
+    @Step("Waiting for project sttings to be edited")
+    public RepositoriesPage waitForSuccessProjectSettingsEditMessage() {
+        WebDriverWait wait = new WebDriverWait(driver, 10);
+        wait.until(ExpectedConditions.visibilityOfAllElements(successEditProjectSettingsMessage));
+        return this;
+    }
+
 }

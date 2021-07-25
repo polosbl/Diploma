@@ -61,8 +61,6 @@ public class SuitsTest extends BaseTest {
                         name,
                         code,
                         newName);
-        //TODO: Implement waiter
-        Thread.sleep(3000);
         Assert.assertEquals(suiteSteps.getCreatedSuiteName(), newName);
         // Postcondition: delete project
         projectSteps
@@ -79,8 +77,6 @@ public class SuitsTest extends BaseTest {
                         System.getenv().getOrDefault("password", PropertyReader.getProperty("password")),
                         name,
                         code);
-        //TODO: Implement waiter
-        Thread.sleep(2000);
         Assert.assertTrue(suiteSteps.isSuiteDeleted(name));
         // Postcondition: delete project
         projectSteps

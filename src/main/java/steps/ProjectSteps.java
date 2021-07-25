@@ -147,6 +147,10 @@ public class ProjectSteps {
         return repositoriesPage.getProjectName();
     }
 
+    public String getProjectNameAfterEdition() {
+        return repositoriesPage.getProjectName();
+    }
+
     public String getCurrentUrl() {
         return projectsPage.getCurrentUrl();
     }

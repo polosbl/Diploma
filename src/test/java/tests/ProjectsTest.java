@@ -60,7 +60,7 @@ public class ProjectsTest extends BaseTest {
                         name,
                         code,
                         newName);
-        Assert.assertEquals(projectSteps.getProjectName(), newName);
+        Assert.assertEquals(projectSteps.getProjectNameAfterEdition(), newName);
         // Postcondition: delete project
         projectSteps
                 .findAndDeleteProject(newName);
@@ -84,7 +84,7 @@ public class ProjectsTest extends BaseTest {
                         System.getenv().getOrDefault("password", PropertyReader.getProperty("password")));
         projectSteps
                 .findAndEditProject(name, newName);
-        Assert.assertEquals(projectSteps.getProjectName(), newName);
+        Assert.assertEquals(projectSteps.getProjectNameAfterEdition(), newName);
         // Postcondition: delete project
         projectSteps
                 .findAndDeleteProject(newName);
@@ -169,7 +169,7 @@ public class ProjectsTest extends BaseTest {
                         System.getenv().getOrDefault("password", PropertyReader.getProperty("password")),
                         name,
                         newName);
-        Assert.assertEquals(projectSteps.getProjectName(), newName);
+        Assert.assertEquals(projectSteps.getProjectNameAfterEdition(), newName);
         projectSteps
                 .findAndDeleteProject(newName);
     }
