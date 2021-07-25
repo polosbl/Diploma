@@ -6,6 +6,8 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
 @Log4j2
 public class ProjectsPage extends HeaderPage {
@@ -25,6 +27,9 @@ public class ProjectsPage extends HeaderPage {
 
     @FindBy(xpath = "//*[@class='filters-block']//*[@name='title']")
     public WebElement searchField;
+
+    @FindBy(xpath = "//*[@class='pagination']")
+    public WebElement pagination;
 
     public ProjectsPage openPage() {
         driver.get(PROJECTS_URL);
@@ -106,5 +111,12 @@ public class ProjectsPage extends HeaderPage {
     @Step ("Checking is project {projectName} deleted")
     public boolean isProjectDeleted(String projectName) {
         return driver.findElements(By.xpath(String.format(PROJECT_NAME,projectName))).isEmpty();
+    }
+
+    @Step("Waiting for page to open")
+    public ProjectsPage waitForPageOpened() {
+        WebDriverWait wait = new WebDriverWait(driver, 10);
+        wait.until(ExpectedConditions.visibilityOf(pagination));
+        return this;
     }
 }

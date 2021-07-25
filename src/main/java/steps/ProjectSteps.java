@@ -51,6 +51,7 @@ public class ProjectSteps {
     public ProjectSteps findAndDeleteProject(String name) {
         projectsPage
                 .openPage()
+                .waitForPageOpened()
                 .clearSearchField()
                 .findProjectByName(name)
                 .deleteProjectFromList(name, "Delete")
@@ -63,6 +64,7 @@ public class ProjectSteps {
         loginPage
                 .openPage()
                 .login(email, password)
+                .waitForPageOpened()
                 .clearSearchField()
                 .findProjectByName(name)
                 .openProjectRepository(name)
@@ -75,6 +77,7 @@ public class ProjectSteps {
         loginPage
                 .openPage()
                 .login(email, password)
+                .waitForPageOpened()
                 .clearSearchField()
                 .findProjectByName(name)
                 .openProjectRepository(name);
@@ -84,6 +87,7 @@ public class ProjectSteps {
     @Step ("Finding and opening project")
     public ProjectSteps findAndOpenProject(String projectName) {
         projectsPage
+                .waitForPageOpened()
                 .clearSearchField()
                 .findProjectByName(projectName)
                 .openProjectRepository(projectName);
@@ -93,6 +97,7 @@ public class ProjectSteps {
     @Step ("Finding and editing project")
     public ProjectSteps findAndEditProject(String name, String newName) {
         projectsPage
+                .waitForPageOpened()
                 .clearSearchField()
                 .findProjectByName(name)
                 .openProjectRepository(name)
