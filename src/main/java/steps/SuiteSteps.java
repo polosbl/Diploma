@@ -73,6 +73,10 @@ public class SuiteSteps {
         return repositoriesPage.getCreatedSuiteName();
     }
 
+    public String getCreatedSuiteNameAfterEdit() {
+        return repositoriesPage.getCreatedSuiteNameAfterEdit();
+    }
+
     @Step ("Checking is suite {name} deleted")
     public boolean isSuiteDeleted(String name) {
         return repositoriesPage.isSuiteDeleted(name);

@@ -61,7 +61,7 @@ public class SuitsTest extends BaseTest {
                         name,
                         code,
                         newName);
-        Assert.assertEquals(suiteSteps.getCreatedSuiteName(), newName);
+        Assert.assertEquals(suiteSteps.getCreatedSuiteNameAfterEdit(), newName);
         // Postcondition: delete project
         projectSteps
                 .findAndDeleteProject(name);

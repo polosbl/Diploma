@@ -209,6 +209,11 @@ public class RepositoriesPage extends HeaderPage {
      * @return the created suite name
      */
     public String getCreatedSuiteName() {
+        log.info("Getting created suite name");
+        return createdSuiteName.getText();
+    }
+
+    public String getCreatedSuiteNameAfterEdit() {
         waitForSuccessEditSuiteMessage();
         log.info("Getting created suite name");
         return createdSuiteName.getText();
