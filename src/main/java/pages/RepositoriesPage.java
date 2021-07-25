@@ -8,6 +8,8 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 import utils.CommonUtils;
 
 @Log4j2
@@ -36,6 +38,9 @@ public class RepositoriesPage extends HeaderPage {
 
     @FindBy(xpath = "//*[@id='inputTitle']")
     public WebElement projectNameField;
+
+    @FindBy(xpath = "//*[@class='suite-block']")
+    public WebElement suiteBlock;
 
     @FindBy(xpath = "//*[@id='inputCode']")
     public WebElement projectCodeField;
@@ -109,6 +114,7 @@ public class RepositoriesPage extends HeaderPage {
      * @return the project name
      */
     public String getProjectName() {
+        waitForSuitsListToOpen();
         log.info("Getting project name form header");
         return projectName.getText();
     }
@@ -221,6 +227,13 @@ public class RepositoriesPage extends HeaderPage {
      */
     public boolean isTestCaseDeleted(String suiteName) {
         return driver.findElements(By.xpath(String.format(CREATED_TEST_CASE_NAME, suiteName))).isEmpty();
+    }
+
+    @Step("Waiting for page to open")
+    public RepositoriesPage waitForSuitsListToOpen() {
+        WebDriverWait wait = new WebDriverWait(driver, 10);
+        wait.until(ExpectedConditions.visibilityOfAllElements(suiteBlock));
+        return this;
     }
 
 }

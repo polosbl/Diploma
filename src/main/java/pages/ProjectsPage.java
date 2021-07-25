@@ -113,6 +113,11 @@ public class ProjectsPage extends HeaderPage {
         return driver.findElements(By.xpath(String.format(PROJECT_NAME,projectName))).isEmpty();
     }
 
+    /**
+     * Wait for projects page to open projects page.
+     *
+     * @return the projects page
+     */
     @Step("Waiting for page to open")
     public ProjectsPage waitForProjectsPageToOpen() {
         WebDriverWait wait = new WebDriverWait(driver, 10);
