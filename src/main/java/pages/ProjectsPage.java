@@ -68,6 +68,7 @@ public class ProjectsPage extends HeaderPage {
      */
     @Step ("Finding project by name - {name}")
     public ProjectsPage findProjectByName(String name) {
+        clearSearchField();
         log.info("Typing project name {name} to search field");
         searchField.sendKeys(name);
         return this;
