@@ -18,7 +18,7 @@ import steps.ProjectSteps;
 import steps.SuiteSteps;
 import steps.TestCaseSteps;
 import testConstants.ITestConstants;
-import utils.RandomGenerators;
+import test_utils.TestListener;
 
 import java.util.concurrent.TimeUnit;
 @Log4j2
@@ -61,8 +61,8 @@ public class BaseTest implements ITestConstants {
         loginSteps = new LoginSteps(driver);
     }
 
-//    @AfterMethod
-//    public void endTest() {
-//        driver.quit();
-//    }
+    @AfterMethod
+    public void endTest() {
+        driver.quit();
+    }
 }
