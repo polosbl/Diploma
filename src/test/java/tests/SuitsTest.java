@@ -50,7 +50,7 @@ public class SuitsTest extends BaseTest {
     }
 
     @Test (description = "Logging in and creating project, then creating and editing suite's name",groups = "SuiteTest")
-    public void editSuiteNameTest() throws InterruptedException {
+    public void editSuiteNameTest() {
         String name = RandomGenerators.randomId();
         String code = RandomGenerators.randomCode();
         String newName = RandomGenerators.randomId();
@@ -68,7 +68,7 @@ public class SuitsTest extends BaseTest {
     }
 
     @Test (description = "Logging in and creating project, then creating and deleting suite",groups = "SuiteTest")
-    public void deleteSuiteTest() throws InterruptedException {
+    public void deleteSuiteTest() {
         String name = RandomGenerators.randomId();
         String code = RandomGenerators.randomCode();
         suiteSteps
