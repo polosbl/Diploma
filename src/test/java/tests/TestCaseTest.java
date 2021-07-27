@@ -23,7 +23,7 @@ public class TestCaseTest extends BaseTest {
     }
 
     @Test (description = "Logging in and creating project and suite, then creating and  deleting test case",groups = "TestCaseTest")
-    public void deleteTestCaseTest() throws InterruptedException {
+    public void deleteTestCaseTest() {
         String name = RandomGenerators.randomId();
         String code = RandomGenerators.randomCode();
         testCaseSteps
