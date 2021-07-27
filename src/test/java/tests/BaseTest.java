@@ -17,7 +17,7 @@ import steps.LoginSteps;
 import steps.ProjectSteps;
 import steps.SuiteSteps;
 import steps.TestCaseSteps;
-import testConstants.ITestConstants;
+import test_constants.ITestConstants;
 import test_utils.TestListener;
 
 import java.util.concurrent.TimeUnit;
